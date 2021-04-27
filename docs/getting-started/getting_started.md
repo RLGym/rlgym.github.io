@@ -30,10 +30,28 @@ while not done:
 ```
 
 ## Training an agent
-You can now train an agent with your learning aglorithm of choice! However, the default configuration of RLGym configures a trivial 
-problem that will not produce a competent game-playing agent. The default RLGym environment simply punishes the agent at every step for having any angular velocity, 
-and terminates after 15 seconds of in-game time have passed. We do this so users can quickly test if their learning algorithm can train anything in Rocket League at all, 
-before moving on to the task they are interested in.
+You can now train an agent with your learning aglorithm of choice! RLGym natively supports [OpenAI Baselines](https://github.com/openai/baselines) - a library of common Reinforcement Learning algorithms.
+The following is an example of how to train an agent in the default environment of RLGym using the Baselines of PPO
+```python
+
+import rlgym
+import tensorflow as tf
+from baselines.ppo2 import ppo2
+from baselines.common import models
+from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
+
+
+#2 layer MLP, 64 hidden nodes per layer, ReLU activation function.
+net = models.mlp(num_layers=2, num_hidden=64, activation=tf.keras.activations.relu)
+
+#Wrap RLGym in a VecEnv from baselines.
+env = DummyVecEnv([lambda: rlgym.make("default")])
+
+#Train!
+ppo2.learn(network=net, env=env, total_timesteps=MAX_TIMESTEPS)
+```
+
+And just like that we are training a Rocket League agent! However, the default configuration of RLGym creates a trivial problem that will not produce a competent game-playing agent. The default RLGym environment simply punishes the agent at every step for having any angular velocity, and terminates after 15 seconds of in-game time have passed. We do this so users can quickly test if their learning algorithm can train anything in Rocket League at all, before moving on to the task they are interested in.
 
 RLGym provides users the ability to broadly configure the way an environment is set up, so users can specify whatever problem they wish to solve in Rocket League. To learn about
 configuring a custom environment, visit our [Tutorials](https://rlgym.github.io/docs-page.html#section-3) page.
