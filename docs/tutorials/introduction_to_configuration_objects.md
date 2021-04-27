@@ -18,7 +18,7 @@ We'll give our agent 20 seconds from the start of an episode to drive toward the
 import rlgym
 from rlgym.utils.terminal_conditions.common_conditions import TimeoutCondition
 from rlgym.utils.reward_functions.common_rewards import MoveTowardsBallReward
-
+from rlgym.utils.obs_builders.advanced_obs import AdvancedObs
 
 #The desired number of seconds we would like to wait before terminating an episode.
 ep_len_seconds = 20
@@ -34,16 +34,17 @@ max_steps = int(round(ep_len_minutes * ticks_per_sec / tick_skip))
 
 timeout_condition = TimeoutCondition(max_steps)
 reward_function = MoveTowardsBallReward()
+obs_builder = AdvancedObs()
 terminal_conditions = [timeout_condition,]
 
 #All we have to do now is pass our custom configuration functions to rlgym!
 env = rlgym.make("default",
                  spawn_opponents=False,
-                 reward_fn=reward_function, 
+                 reward_fn=reward_function,
+                 obs_builder=obs_builder,
                  terminal_conditions=terminal_conditions, 
                  tick_skip=tick_skip)
 ```
-And just like that we have configured our custom environment! Note that we didn't provide an `ObsBuilder` to our environment, this means that the default observation builder for the environment we're configuring will be used.
-The same is true for all optional arguments in an RLGym environment, if any arguments are not provided, the defaults will be used.
+And just like that we have configured our custom environment! Any optional arguments that we didn't provide will remain at their defaults.
 
 To learn more about each configuration object and how to implement your own, visit each of their respective [Tutorials](https://rlgym.github.io/docs-page.html#section-3)
