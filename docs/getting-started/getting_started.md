@@ -45,30 +45,26 @@ while not done:
 ```
 
 ## Training an agent
-You can now train an agent with your learning aglorithm of choice! RLGym natively supports [OpenAI Baselines](https://github.com/openai/baselines) - a library of common Reinforcement Learning algorithms.
-The following is an example of how to train an agent in the default environment of RLGym using the Baselines of PPO
+You can now train an agent with your learning aglorithm of choice! Because RLGym follows the OpenAI Gym API, any of the common Reinforcement Learning algorithm libraries should be supported.
+The following is an example of how to train an agent in the default environment of RLGym using an implementation of PPO from the [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/) library
+
 ```python
-
 import rlgym
-import tensorflow as tf
-from baselines.ppo2 import ppo2
-from baselines.common import models
-from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
+from stable_baselines3 import PPO
 
+#Make the default rlgym environment
+env = rlgym.make("default")
 
-#2 layer MLP, 64 hidden nodes per layer, ReLU activation function.
-net = models.mlp(num_layers=2, num_hidden=64, activation=tf.keras.activations.relu)
+#Initialize PPO from stable_baselines3
+model = PPO("MlpPolicy", env=env, verbose=1)
 
-#Wrap RLGym in a VecEnv from baselines.
-env = DummyVecEnv([lambda: rlgym.make("default")])
-
-#Train!
-ppo2.learn(network=net, env=env, total_timesteps=MAX_TIMESTEPS)
+#Train our agent!
+model.learn(total_timesteps=int(1e6))
 ```
 
 And just like that we are training a Rocket League agent! 
 
-However, the default configuration of RLGym creates a trivial problem that will not produce a competent game-playing agent. The default RLGym environment simply punishes the agent at every step for having any angular velocity, and terminates after 15 seconds of in-game time have passed. We do this so users can quickly test if their learning algorithm can train anything in Rocket League at all, before moving on to the task they are interested in.
+However, the default configuration of RLGym creates a trivial problem that will not produce a competent game-playing agent. This configuration is meant as a testing ground where users can verify that they have installed RLGym successfully, and their learning algorithm is working. When the default reward is maximized, the agent should have zero angular velocity at all times.
 
-RLGym provides users the ability to broadly configure the way an environment is set up, so users can specify whatever problem they wish to solve in Rocket League. To learn about
-configuring a custom environment, visit our [Tutorials](https://rlgym.github.io/docs-page.html#section-3) page.
+To train a game playing agent, RLGym provides users the ability to broadly configure the way an environment is set up, so users can specify whatever problem they wish to solve in Rocket League. To learn about
+configuring a custom environment, read through our [Tutorials](https://rlgym.github.io/docs-page.html#section-3).
