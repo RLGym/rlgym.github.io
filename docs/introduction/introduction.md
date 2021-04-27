@@ -18,6 +18,3 @@ RLGym is available on pip, install via
 ```python
 pip install rlgym
 ```
-
-## Usage
-To get set up your first RLGym environment and start training a Rocket League agent, visit our [Getting Started](rlgym.github.io/docs/getting-started) page.
