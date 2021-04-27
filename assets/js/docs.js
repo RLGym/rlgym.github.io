@@ -71,7 +71,7 @@ function loadDocsAsync() {
 			const container = document.createElement('section');
 			container.className = 'docs-section';
 			articleElement.appendChild(container);
-			articleContent.push(loadFileMock(file, container));
+			articleContent.push(loadFileAsync(file, container));
 		})
 		articlePromises.push(Promise.all(articleContent).then(() => generateSectionNav(articleElement)));
 	}
