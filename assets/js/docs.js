@@ -63,6 +63,7 @@ function generateSectionNav(article) {
 }
 
 function loadDocsAsync() {
+	const articlePromises = [];
 	for (let article of docs) {
 		const articleElement = document.getElementById(article.id);
 		const articleContent = [];
@@ -70,11 +71,11 @@ function loadDocsAsync() {
 			const container = document.createElement('section');
 			container.className = 'docs-section';
 			articleElement.appendChild(container);
-			articleContent.push(loadFileAsync(file, container));
+			articleContent.push(loadFileMock(file, container));
 		})
-		Promise.all(articleContent).then(() => generateSectionNav(articleElement))
-			.catch((reason) => console.error('Unable to load article', article.id, reason));
+		articlePromises.push(Promise.all(articleContent).then(() => generateSectionNav(articleElement)));
 	}
+	return Promise.all(articlePromises);
 }
 
 $(window).on('load resize', function() {
@@ -110,32 +111,6 @@ $(document).ready(function() {
 		}
 			
     });
-    
-
-    /* ====== Activate scrollspy menu ===== */
-    $('body').scrollspy({target: '#docs-nav', offset: 100});
-    
-    
-    
-    /* ===== Smooth scrolling ====== */
-	$('#docs-sidebar a.scrollto').on('click', function(e){
-        //store hash
-        var target = this.hash;    
-        e.preventDefault();
-		$('body').scrollTo(target, 800, {offset: -69, 'axis':'y'});
-		
-		//Collapse sidebar after clicking
-		if ($('#docs-sidebar').hasClass('sidebar-visible') && $(window).width() < 1200){
-			$('#docs-sidebar').removeClass('sidebar-visible').addClass('slidebar-hidden');
-		}
-		
-	});
-	
-	/* wmooth scrolling on page load if URL has a hash */
-	if(window.location.hash) {
-		var urlhash = window.location.hash;
-		$('body').scrollTo(urlhash, 800, {offset: -69, 'axis':'y'});
-	}
 	
 	
 	/* Bootstrap lightbox */
@@ -147,6 +122,33 @@ $(document).ready(function() {
     });
 
 
-	loadDocsAsync();
+	loadDocsAsync()
+		.then(() => Prism.highlightAll())
+		.then(() => {
+			/* ====== Activate scrollspy menu ===== */
+			$('body').scrollspy({target: '#docs-nav', offset: 100});
+
+
+
+			/* ===== Smooth scrolling ====== */
+			$('#docs-sidebar a.scrollto').on('click', function(e){
+				//store hash
+				var target = this.hash;
+				e.preventDefault();
+				$('body').scrollTo(target, 800, {offset: -69, 'axis':'y'});
+
+				//Collapse sidebar after clicking
+				if ($('#docs-sidebar').hasClass('sidebar-visible') && $(window).width() < 1200){
+					$('#docs-sidebar').removeClass('sidebar-visible').addClass('slidebar-hidden');
+				}
+
+			});
+
+			/* smooth scrolling on page load if URL has a hash */
+			if(window.location.hash) {
+				var urlhash = window.location.hash;
+				$('body').scrollTo(urlhash, 800, {offset: -69, 'axis':'y'});
+			}
+	});
 
 });
