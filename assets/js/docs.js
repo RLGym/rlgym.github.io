@@ -9,7 +9,7 @@ const docs = [
 	{
 		id: 'getting-started',
 		files: [
-			'docs/getting-started/getting-started.md',
+			'docs/getting-started/getting_started.md',
 		]
 	},
 	{
@@ -42,12 +42,12 @@ const docs = [
 function loadFileAsync(path, container) {
 	return fetch(path)
 		.then(response => response.text())
-		.then(data => container.innerHTML = marked(data))
+		.then(data => container.innerHTML = marked(data));
 }
 
 function loadFileMock(path, container) {
-	container.innerHTML = marked('## Marked in browser\n\n'+path+'\n\nRendered by **marked**.\n\n## Header 2\n\nconteeeent')
-	return Promise.resolve()
+	container.innerHTML = marked('## Marked in browser\n\n'+path+'\n\nRendered by **marked**.\n\n## Header 2\n\nconteeeent');
+	return Promise.resolve();
 }
 
 function generateSectionNav(article) {
@@ -73,6 +73,7 @@ function loadDocsAsync() {
 			articleContent.push(loadFileAsync(file, container));
 		})
 		Promise.all(articleContent).then(() => generateSectionNav(articleElement))
+			.catch((reason) => console.error('Unable to load article', article.id, reason));
 	}
 }
 
