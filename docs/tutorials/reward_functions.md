@@ -36,7 +36,7 @@ class SpeedReward(RewardFunction):
     return 0
 ```
 Now we can simply pass an instance of our reward function to RLGym when we make an environment
-```
+```python
 import rlgym
 
 
