@@ -11,7 +11,7 @@ reset(self, initial_state: GameState)
 build_obs(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> Any
 ```
 
-To implement a custom `ObsBuilder`, just inherit from the parent class and implement the above functions.
+To implement a custom `ObsBuilder`, just inherit from the parent class and implement the above methods.
 
 As an example, let's build an observation builder that contains the physics state of the ball and every player in the match.
 ```python
