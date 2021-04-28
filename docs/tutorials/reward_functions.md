@@ -73,6 +73,7 @@ Now we'll take one random action and see what our reward looks like:
 >>> 'Rewarding player ID 0'
 >>> print(reward)
 >>> 0
+>>> env.close()
 ```
 Alright, now let's look at what happens to our reward when we add an extra player to the environment:
 ```python
@@ -86,5 +87,6 @@ Alright, now let's look at what happens to our reward when we add an extra playe
 >>> 'Rewarding player ID 5'
 >>> print(reward)
 >>> [0, 0]
+>>> env.close()
 ```
 We can see our reward function gets called twice (and that we had to provide two actions)! Furthermore, the reward that was returned by `env.step(actions)` is no longer a single number. Instead, it is an array of rewards which is organized in the same order as the actions that were given for that step (i.e. reward[0] -> actions[0] & reward[1] -> action[1]).
