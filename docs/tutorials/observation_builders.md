@@ -41,7 +41,7 @@ env = rlgym.make("default", obs_builder=CustomObsBuilder())
 ```
 And we're done!
 
-## Understanding Perspective
+### Understanding Perspective
 The observation builder we wrote above will work fine for many purposes, but for Rocket League in particular it can be useful to control more than one player with the same agent
 (i.e. if we want to use one neural network to control both the orange and blue players in a 1v1). Unfortunately, our observation builder above will return the physics state of every object in absolute coordinates, so if our agent has learned to play on the blue team it will get confused when we ask it to play on the orange team.
 
