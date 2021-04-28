@@ -23,14 +23,14 @@ from rlgym.utils.obs_builders.advanced_obs import AdvancedObs
 #The desired number of seconds we would like to wait before terminating an episode.
 ep_len_seconds = 20
 
-#We will tell RLGym to repeat every action for 8 physics ticks before waiting for a new action from our agent.
-tick_skip = 8
+#By default, RLGym will repeat every action for 8 physics ticks before waiting for a new action from our agent.
+default_tick_skip = 8
 
 #The tick rate of the Rocket League physics engine.
-ticks_per_sec = 120
+physics_ticks_per_sec = 120
 
 #Now we compute the number of calls to env.step() that need to happen for our desired amount of time to pass.
-max_steps = int(round(ep_len_minutes * ticks_per_sec / tick_skip))
+max_steps = int(round(ep_len_seconds * physics_ticks_per_sec / default_tick_skip))
 
 timeout_condition = TimeoutCondition(max_steps)
 reward_function = MoveTowardsBallReward()
