@@ -45,6 +45,7 @@ env = rlgym.make("default",
 ```
 And we're off to the races!
 
+### Multiple Players
 Note how each of the reward calculation methods must accept a `PlayerData` object as an argument. This is because RLGym supports multi-agent play for 1v1, 2v2, and 3v3. Your reward function will be called once per step for *each player* in the game.
 
 To illustrate how this works, let's look at what happens when we add more players to the game with our reward function.
