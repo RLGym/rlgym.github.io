@@ -46,7 +46,7 @@ while not done:
 
 ## Training an agent
 You can now train an agent with your learning aglorithm of choice! Because RLGym follows the OpenAI Gym API, any of the common Reinforcement Learning libraries should be supported.
-The following is an example of how to train an agent in the default environment of RLGym using an implementation of PPO from the [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/) library
+The following is an example of how to train an agent in the default RLGym environment using an implementation of PPO from the [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/) library
 
 ```python
 import rlgym
@@ -64,7 +64,7 @@ model.learn(total_timesteps=int(1e6))
 
 And just like that we are training a Rocket League agent! 
 
-However, the default configuration of RLGym creates a trivial problem that will not produce a competent game-playing agent. This configuration is meant as a testing ground where users can verify that they have installed RLGym successfully, and their learning algorithm is working. When the default reward is maximized, the agent should have zero angular velocity at all times.
+Unfortunately the default configuration of RLGym will not produce a competent game-playing agent. This configuration is meant as a testing ground where users can quickly verify that they have installed RLGym successfully, and their learning algorithm is working. When the default reward is maximized, the agent should have zero angular velocity at all times.
 
 To train a game playing agent, RLGym provides users the ability to broadly configure the way an environment is set up, so users can specify whatever problem they wish to solve in Rocket League. To learn about
 configuring a custom environment, read through our [Tutorials](https://rlgym.github.io/docs-page.html#section-3).
