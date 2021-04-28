@@ -1,10 +1,10 @@
-Q: How do I train an agent with RLGym?
+Q: How do I train an bot with RLGym?
 
 A: RLGym is an interface to Rocket League that follows the [OpenAI Gym API](https://gym.openai.com/). It is up to you to use a learning algorithm to train an agent in RLGym.
 
 ***
 
-Q: How long will it take for my agent to become superhuman?
+Q: How long will it take for my bot to become superhuman?
 
 A: That depends on how much time and money you have. [OpenAI Five](https://openai.com/blog/openai-five/) trained for 54,000 *years* worth of time, so you should expect Rocket League
 to take an enormous amount of compute and time.
