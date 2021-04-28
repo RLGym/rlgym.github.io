@@ -1,5 +1,5 @@
 ## Setting up an environment
-Once RLGym is [installed](https://rlgym.github.io/docs-page.html#section-1), simply import the library and call the `make()` function.
+Once RLGym is [installed](https://rlgym.github.io/docs-page.html#installation), simply import the library and call the `make()` function.
 ```python
 import rlgym
 
@@ -8,7 +8,7 @@ env = rlgym.make("default")
 ```
 This will configure Rocket League with the default parameters that come with RLGym.
 
-The `make` function comes with a number of optional parameters, which are explained in the [Tutorials](https://rlgym.github.io/docs-page.html#section-3) section of the wiki.
+The `make` function comes with a number of optional parameters, which are explained in the [Documentation](https://rlgym.github.io/docs-page.html#documentation) section of the wiki.
 For convenience, all the `make` parameters and their types are listed here:
 - env_name: str,
 - ep_len_minutes: float,
@@ -67,4 +67,4 @@ And just like that we are training a Rocket League agent!
 Unfortunately the default configuration of RLGym will not produce a competent game-playing agent. This configuration is meant as a testing ground where users can quickly verify that they have installed RLGym successfully, and their learning algorithm is working. When the default reward is maximized, the agent should have zero angular velocity at all times.
 
 To train a game playing agent, RLGym provides users the ability to broadly configure the way an environment is set up, so users can specify whatever problem they wish to solve in Rocket League. To learn about
-configuring a custom environment, read through our [Tutorials](https://rlgym.github.io/docs-page.html#section-3).
+configuring a custom environment, read through our [Tutorials](https://rlgym.github.io/docs-page.html#tutorials).
