@@ -2,7 +2,7 @@
 A `TerminalCondition` is a simple object that examines the current game state and returns `True` if that state should be the final state in an episode, and `False` otherwise.
 Terminal conditions can be paired together in a list, where an episode will be terminated if any of the provided terminal conditions are evaluated to `True`.
 
-A terminal condition must implement two functions:
+A terminal condition must implement two methods:
 ```python
 #Called once per reset.
 reset(self, initial_state: GameState)
@@ -10,7 +10,7 @@ reset(self, initial_state: GameState)
 #Called once per step.
 is_terminal(self, current_state: GameState) -> bool
 ```
-To write a custom terminal condition, inherit from the parent class and implement the above functions.
+To write a custom terminal condition, inherit from the parent class and implement the above methods.
 
 As an example, let's implement a custom terminal condition that will end an episode as soon as any player touches the ball.
 ```python
