@@ -42,8 +42,7 @@ env = rlgym.make("default",
                  spawn_opponents=False,
                  reward_fn=reward_function,
                  obs_builder=obs_builder,
-                 terminal_conditions=terminal_conditions, 
-                 tick_skip=tick_skip)
+                 terminal_conditions=terminal_conditions)
 ```
 And just like that we have configured our custom environment! Any optional arguments that we didn't provide will remain at their defaults.
 
