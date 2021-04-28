@@ -1,15 +1,15 @@
 ## Configuration Objects
 At their core, RLGym environments are configured through 3 fundamental objects:
-1. A [RewardFunction](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/utils/reward_functions/reward_function.py)
-2. An [ObsBuilder](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/utils/obs_builders/obs_builder.py)
-3. A list of [TerminalCondition](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/utils/terminal_conditions/terminal_condition.py) objects
+1. A [RewardFunction](https://rlgym.github.io/docs-page.html#reward-functions)
+2. An [ObsBuilder](https://rlgym.github.io/docs-page.html#observation-builders)
+3. A list of [TerminalCondition](https://rlgym.github.io/docs-page.html#terminal-conditions) objects
 
 RLGym uses these 3 objects at every step to determine what reward should be assigned to each action, what observation should be returned to the agent, and when an episode should be terminated.
 The flowchart below depicts how each of these objects is used by RLGym.
 
 ![A flowchart of RLGym](../../assets/images/rlgym_environment_flowchart.png)
 
-RLGym comes with a few of these object implemented already to provide users with inspiration when creating their own. The default configuration objects for any RLGym environment can
+RLGym comes with a few of these objects implemented already to provide users with inspiration when creating their own. The default configuration objects for any RLGym environment can
 be overridden by simply passing instances of a desired configuration object in the optional arguments of `make`. 
 
 As an example, let's configure an environment that will put our agent in the field alone with the ball, and give it a reward for driving in the direction of the ball.
