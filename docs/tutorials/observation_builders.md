@@ -42,12 +42,12 @@ env = rlgym.make("default", obs_builder=CustomObsBuilder())
 And we're done!
 
 ### Understanding Perspective
-The observation builder we wrote above will work fine for many purposes, but for Rocket League in particular it can be useful to control more than one player with the same agent
-(i.e. if we want to use one neural network to control both the orange and blue players in a 1v1). Unfortunately, our observation builder above will return the physics state of every object in absolute coordinates, so if our agent has learned to play on the blue team it will get confused when we ask it to play on the orange team.
+The observation builder we wrote above will work for many purposes, but for training a game playing agent it can be useful to control more than one player with the same agent
+(i.e. if we want to use one neural network to control both the orange and blue players in a 1v1). Unfortunately, the observation builder above will return the physics state of every object from the perspective of the game world, so if our agent has learned to play on the blue team it will get confused when we ask it to play on the orange team.
 
 To alleviate this, we can simply transform all the physics data in every object to share the same perspective. While this would be expensive to do in Python, RLGym computes these transformations in C++ when constructing the gamestate in the Bakkesmod plugin. You can access them directly as the "inverted" physics data for each player and the ball.
 
-Let's take a look at an example of building an observation builder that will always return an observation that looks as though it came from a player on the blue team, even if the player is on the orange team.
+Let's take a look at an example of building an observation builder that will always return an observation that looks as though it came from a player on the blue team, even if that player is on the orange team.
 
 ```python
 from rlgym.utils.obs_builders import ObsBuilder
