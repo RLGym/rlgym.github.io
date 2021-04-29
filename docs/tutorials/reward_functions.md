@@ -89,4 +89,4 @@ Alright, now let's look at what happens to our reward when we add an extra playe
 >>> [0, 0]
 >>> env.close()
 ```
-We can see our reward function gets called twice (and that we had to provide two actions)! Furthermore, the reward that was returned by `env.step(actions)` is no longer a single number. Instead, it is an array of rewards which is organized in the same order as the actions that were given for that step (i.e. reward[0] -> actions[0] & reward[1] -> action[1]).
+We can see our reward function gets called twice (and that we had to provide two actions)! Furthermore, the reward that was returned by `env.step(actions)` is no longer a single number. Instead, it is an array of rewards which is organized in the same order as the actions that were given for that step (i.e. reward[0] -> actions[0] & reward[1] -> actions[1]).
