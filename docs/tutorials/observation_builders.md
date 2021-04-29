@@ -65,9 +65,9 @@ class CustomObsBuilderBluePerspective(ObsBuilder):
     inverted = player.team_num == common_values.ORANGE_TEAM
     
     if inverted:
-      obs += state.ball.seralize()
-    else:
       obs += state.inverted_ball.seralize()
+    else:
+      obs += state.ball.seralize()
       
     for player in state.players:
       if inverted:
