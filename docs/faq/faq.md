@@ -1,4 +1,4 @@
-#### How do I train an bot with RLGym?
+#### How do I train a bot with RLGym?
 
 RLGym is an interface to Rocket League that follows the [OpenAI Gym API](https://gym.openai.com/). It is up to you to use a learning algorithm to train an agent in RLGym.
 
