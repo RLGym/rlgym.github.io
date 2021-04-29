@@ -37,7 +37,7 @@ RLGym will now terminate an episode only when the ball has been touched by any p
 take quite some time in the early stages of training for any player to accidentally touch the ball. Because of this, it might be useful for us to terminate an episode if a 
 player has touched the ball or if some number of seconds have passed in the game.
 
-To do this, we can leverage the existing `TimeoutCondition` that comes with RLGym natively in combination with our custom timeout condition. Let's say we want an episode to end
+To do this, we can leverage the existing `TimeoutCondition` that comes with RLGym natively in combination with our custom terminal condition. Let's say we want an episode to end
 after 20 seconds of in-game time or if a player has touched the ball. All we need to do is compute how many `env.step()` calls it will take for 20 seconds to pass in the game, 
 and pass that in to the constructor of `TimeoutCondition`. Then we can simply add the timeout condition to our list of terminal conditions when we ask RLGym to make an 
 environment, and we're done!
