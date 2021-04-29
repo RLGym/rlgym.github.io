@@ -22,6 +22,9 @@ code {
 	@include border-radius(0.25rem);
 }
 
+pre code {
+	padding: 0;
+}
 
 .table-bordered th, .table-bordered td {
 	border-color: $theme-divider;
