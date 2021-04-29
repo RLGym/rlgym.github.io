@@ -18,3 +18,4 @@ RLGym is available on pip, install via
 ```python
 pip install rlgym
 ```
+Now, to enable the RLGym plugin, open Rocket League. From inside the game, press F2 to open the Bakkesmod menu and navigate to the plugins tab. From there, open the Plugin Manager and scroll down to the RLGym plugin. Check the box, then close the game.
