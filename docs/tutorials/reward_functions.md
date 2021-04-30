@@ -77,7 +77,7 @@ Now we'll take one random action and see what our reward looks like:
 ```
 Alright, now let's look at what happens to our reward when we add an extra player to the environment:
 ```python
->>> env = rlgym.make("duel", self_play=True, reward_fn=SpeedReward())
+>>> env = rlgym.make("duel self", reward_fn=SpeedReward())
 >>> env.reset()
 >>> action1 = env.action_space.sample()
 >>> action2 = env.action_space.sample()
