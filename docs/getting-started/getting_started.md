@@ -17,9 +17,9 @@ For convenience, all the `make` parameters and their types are listed here:
 - spawn_opponents: bool,
 - random_resets: bool,
 - team_size: int,
-- terminal_conditions: List[object],
-- reward_fn: object,
-- obs_builder: object,
+- terminal_conditions: List[TerminalCondition],
+- reward_fn: RewardFunction,
+- obs_builder: ObsBuilder,
 - path_to_rl: str,
 - use_injector: bool
 
