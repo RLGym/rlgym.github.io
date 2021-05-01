@@ -29,19 +29,19 @@ To interact with the game, simply treat it like any other OpenAI Gym environment
 ```python
 import rlgym
 
-
 env = rlgym.make("default")
-obs = env.reset()
-done = False
 
-while not done:
+while True:
+    obs = env.reset()
+    done = False
 
-  #Here we sample a random action. If you have an agent, you would get an action from it here.
-  action = env.action_space.sample() 
-  
-  next_obs, reward, done, gameinfo = env.step(action)
-  
-  obs = next_obs
+    while not done:
+      #Here we sample a random action. If you have an agent, you would get an action from it here.
+      action = env.action_space.sample() 
+      
+      next_obs, reward, done, gameinfo = env.step(action)
+      
+      obs = next_obs
 ```
 
 ## Training an agent
