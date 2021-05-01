@@ -15,3 +15,9 @@ Once you have the plugin, navigate to the folder `AppData\Roaming\bakkesmod\bakk
 #### When I pass the steam install location of Rocket League to `rlgym.make()`, the game launches but nothing happens.
 
 When launching through steam, do not pass the location of `RocketLeague.exe` to RLGym. The API will locate Steam automatically, and use that to launch the game for you.
+
+***
+
+#### I have both the Epic and Steam versions of Rocket League installed, but RLGym will only launch the Epic version.
+
+RLGym will always launch the Epic version of Rocket League when it is able. Make sure to ping @Aech9835 in the RLBot Discord ceaselessly until this is fixed.
