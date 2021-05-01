@@ -43,6 +43,7 @@ env = rlgym.make("default",
                  reward_fn=reward_function,
                  obs_builder=obs_builder,
                  terminal_conditions=terminal_conditions)
+#Training loop goes here
 ```
 And just like that we have configured our custom environment! Any optional arguments that we didn't provide will remain at their defaults.
 
