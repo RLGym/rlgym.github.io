@@ -25,6 +25,7 @@ const docs = [
 			'docs/tutorials/reward_functions.md',
 			'docs/tutorials/observation_builders.md',
 			'docs/tutorials/terminal_conditions.md',
+			'docs/tutorials/self_play.md',
 		]
 	},
 	{
