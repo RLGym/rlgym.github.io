@@ -32,6 +32,7 @@ import rlgym
 
 
 env = rlgym.make("default", terminal_conditions=[CustomTerminalCondition()])
+#Training loop goes here
 ```
 RLGym will now terminate an episode only when the ball has been touched by any player in the match. However, if we're training an agent with random initial parameters, it may
 take quite some time in the early stages of training for any player to accidentally touch the ball. Because of this, it might be useful for us to terminate an episode if a 
@@ -56,5 +57,6 @@ condition1 = TimeoutCondition(max_steps)
 condition2 = CustomTerminalCondition()
 
 env = rlgym.make("default", terminal_conditions=[condition1, condition2])
+#Training loop goes here
 ```
 Now we've successfully configured multiple terminal conditions for our environment!
