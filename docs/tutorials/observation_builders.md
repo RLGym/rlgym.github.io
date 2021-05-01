@@ -38,6 +38,7 @@ import rlgym
 
 
 env = rlgym.make("default", obs_builder=CustomObsBuilder())
+#Training loop goes here
 ```
 And we're done!
 
