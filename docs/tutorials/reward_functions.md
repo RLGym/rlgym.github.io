@@ -42,6 +42,7 @@ import rlgym
 
 env = rlgym.make("default",
                  reward_fn=SpeedReward())
+#Training loop goes here
 ```
 And we're off to the races!
 
