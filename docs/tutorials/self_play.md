@@ -45,8 +45,10 @@ Note that `RewardFunction` and `ObsBuilder` objects accept a `PlayerData` object
 The order of the rewards and observations at each step is the same as the order of the actions that were passed in.
 
 e.g.
+```python
 reward[0], new_obs[0] -> actions[0]
 reward[1], new_obs[1] -> actions[1]
+```
 
 The behavior of RLGym will be exactly the same if we want to add more players to each team. Let's consider the case of a 3v3 game with self-play enabled:
 ```python
