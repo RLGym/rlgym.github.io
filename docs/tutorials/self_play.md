@@ -42,7 +42,11 @@ Now we want to spawn a second agent into our game as an opponent that we also co
 We can see that RLGym has given us a list of 2 rewards and 2 observations, just as we expected. Interestingly, the length of each observation has changed from 21 to 30. This is because the `DefaultObs` class will expand the length of an observation to fit more players as we add them.
 
 Note that `RewardFunction` and `ObsBuilder` objects accept a `PlayerData` object when computing a reward and building an observation. The purpose of this is to allow users to construct returns from the perspective of each agent individually.
-The order of the rewards and observations at each step is the same as the order of the actions that were passed in (i.e. reward[0], new_obs[0] -> actions[0], reward[1], new_obs[1] -> actions[1], etc).
+The order of the rewards and observations at each step is the same as the order of the actions that were passed in.
+
+e.g.
+reward[0], new_obs[0] -> actions[0]
+reward[1], new_obs[1] -> actions[1]
 
 The behavior of RLGym will be exactly the same if we want to add more players to each team. Let's consider the case of a 3v3 game with self-play enabled:
 ```python
