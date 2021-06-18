@@ -10,18 +10,17 @@ This will configure Rocket League with the default parameters that come with RLG
 
 The `make` function comes with a number of optional parameters, which are explained in the [Documentation](https://rlgym.github.io/docs-page.html#documentation) section of the wiki.
 For convenience, all the `make` parameters and their types are listed here:
-- env_name: str,
-- ep_len_minutes: float,
-- game_speed: int,
-- tick_skip: int,
-- spawn_opponents: bool,
-- random_resets: bool,
-- team_size: int,
-- terminal_conditions: List[TerminalCondition],
-- reward_fn: RewardFunction,
-- obs_builder: ObsBuilder,
-- path_to_rl: str,
-- use_injector: bool
+- game_speed: int = 100,
+- tick_skip: int = 8,
+- spawn_opponents: bool = True,
+- self_play: bool = False,
+- random_resets: bool = False,
+- team_size: int = 1,
+- terminal_conditions: List[object] = (TimeoutCondition(225), GoalScoredCondition()),
+- reward_fn: object = DefaultReward(),
+- obs_builder: object = DefaultObs(),
+- path_to_rl: str = None,
+- use_injector: bool = False
 
 ## Interacting with the game
 To interact with the game, simply treat it like any other OpenAI Gym environment:
