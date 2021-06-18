@@ -1,14 +1,14 @@
 ## Multiple Agents
 
-For many cases, having an agent play against itself, or against other agents, may be crucial to the training process. RLGym supports this natively with self-play, 2v2, and 3v3 game modes. To enable self-play, simply append the keyword "self" to the name of your environment (e.g. change "default" to "default self"). To change the team size, specify the `team_size` argument in the parameters of `rlgym.make()`. When there are multiple agents in a single match, a user must provide one input per agent. In response, RLGym will provide one reward and one observation per agent at every step.
+For many cases, having an agent play against itself, or against other agents, may be crucial to the training process. RLGym supports this natively with self-play, 2v2, and 3v3 game modes. To enable self-play, change the `self_play` argument in `rlgym.make()`. Similarly, to change the team size, specify the `team_size` argument in `rlgym.make()`. When there are multiple agents in a single match, a user must provide one input per agent. RLGym will provide one reward and one observation per agent at every step in response.
 
-Let's examine how things change when we add multiple agents. First, we will look at the shape of things when only a single agent is present in the match.
+To get an understanding of how things change when we add multiple agents, we will first look at the shape of things when only a single agent is present in the match.
 ```python
 >>> import rlgym
 >>> import numpy as np
 >>> 
 >>> 
->>> env = rlgym.make("default")
+>>> env = rlgym.make()
 >>> obs = env.reset()
 >>> 
 >>> action = env.action_space.sample()
@@ -20,13 +20,13 @@ Let's examine how things change when we add multiple agents. First, we will look
 >>> env.close()
 ```
 
-Now we want to spawn a second agent into our game as an opponent that we also control by enabling self-play. When we do this, RLGym will expect us to provide 2 actions, and we expect it will give us 2 rewards and 2 observations.
+Now we want to spawn a second agent that we control by enabling self-play. When we do this, RLGym will expect us to provide 2 actions, and we expect it will give us 2 rewards and 2 observations.
 ```python
 >>> import rlgym
 >>> import numpy as np
 >>> 
 >>> 
->>> env = rlgym.make("default self")
+>>> env = rlgym.make(self_play=True)
 >>> obs = env.reset()
 >>> 
 >>> action1 = env.action_space.sample()
@@ -56,7 +56,7 @@ The behavior of RLGym will be exactly the same if we want to add more players to
 >>> import numpy as np
 >>> 
 >>> team_size = 3
->>> env = rlgym.make("default self",
+>>> env = rlgym.make(self_play=True,
 >>>                  team_size=team_size)
 >>> obs = env.reset()
 >>> 
