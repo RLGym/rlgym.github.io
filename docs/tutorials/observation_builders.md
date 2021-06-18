@@ -37,7 +37,7 @@ Now all we need to do is pass our observation builder to RLGym when making a mat
 import rlgym
 
 
-env = rlgym.make("default", obs_builder=CustomObsBuilder())
+env = rlgym.make(obs_builder=CustomObsBuilder())
 #Training loop goes here
 ```
 And we're done!
