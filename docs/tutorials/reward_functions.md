@@ -40,8 +40,7 @@ Now we can simply pass an instance of our reward function to RLGym when we make 
 import rlgym
 
 
-env = rlgym.make("default",
-                 reward_fn=SpeedReward())
+env = rlgym.make(reward_fn=SpeedReward())
 #Training loop goes here
 ```
 And we're off to the races!
