@@ -4,7 +4,7 @@ Once RLGym is [installed](https://rlgym.github.io/docs-page.html#installation), 
 import rlgym
 
 
-env = rlgym.make("default")
+env = rlgym.make()
 ```
 This will configure Rocket League with the default parameters that come with RLGym.
 
@@ -29,7 +29,7 @@ To interact with the game, simply treat it like any other OpenAI Gym environment
 ```python
 import rlgym
 
-env = rlgym.make("default")
+env = rlgym.make()
 
 while True:
     obs = env.reset()
@@ -53,7 +53,7 @@ import rlgym
 from stable_baselines3 import PPO
 
 #Make the default rlgym environment
-env = rlgym.make("default")
+env = rlgym.make()
 
 #Initialize PPO from stable_baselines3
 model = PPO("MlpPolicy", env=env, verbose=1)
