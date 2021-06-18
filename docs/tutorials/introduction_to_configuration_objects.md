@@ -38,8 +38,7 @@ obs_builder = AdvancedObs()
 terminal_conditions = [timeout_condition,]
 
 #All we have to do now is pass our custom configuration objects to rlgym!
-env = rlgym.make("default",
-                 spawn_opponents=False,
+env = rlgym.make(spawn_opponents=False,
                  reward_fn=reward_function,
                  obs_builder=obs_builder,
                  terminal_conditions=terminal_conditions)
