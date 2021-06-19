@@ -24,7 +24,7 @@ class CustomObsBuilder(ObsBuilder):
 
   def build_obs(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> Any:
     obs = []
-    obs += state.ball.seralize()
+    obs += state.ball.serialize()
     
     for player in state.players:
       obs += player.car_data.serialize()
@@ -66,9 +66,9 @@ class CustomObsBuilderBluePerspective(ObsBuilder):
     inverted = player.team_num == common_values.ORANGE_TEAM
     
     if inverted:
-      obs += state.inverted_ball.seralize()
+      obs += state.inverted_ball.serialize()
     else:
-      obs += state.ball.seralize()
+      obs += state.ball.serialize()
       
     for player in state.players:
       if inverted:
