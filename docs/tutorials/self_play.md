@@ -1,8 +1,8 @@
 ## Multiple Agents
 
-For many cases, having an agent play against itself, or against other agents, may be crucial to the training process. RLGym supports this natively with self-play, 2v2, and 3v3 game modes. To enable self-play, change the `self_play` argument in `rlgym.make()`. Similarly, to change the team size, specify the `team_size` argument in `rlgym.make()`. When there are multiple agents in a single match, a user must provide one input per agent. RLGym will provide one reward and one observation per agent at every step in response.
+In many cases, having an agent play against itself, or against other agents, may be crucial to the training process. RLGym supports this natively with self-play, 2v2, and 3v3 game modes. To enable self-play, change the `self_play` argument in `rlgym.make()` to `True`. Similarly, to change the team size, specify the `team_size` argument in `rlgym.make()`. When there are multiple agents in a single match, a user must provide one input per agent. RLGym will then provide one reward and one observation per agent at every step in response.
 
-To get an understanding of how things change when we add multiple agents, we will first look at the shape of things when only a single agent is present in the match.
+To get an understanding of how things change when we add multiple agents, we will first look at the shapes of the default reward function and observation builder when only a single agent is present in the match.
 ```python
 >>> import rlgym
 >>> import numpy as np
@@ -20,7 +20,7 @@ To get an understanding of how things change when we add multiple agents, we wil
 >>> env.close()
 ```
 
-Now we want to spawn a second agent that we control by enabling self-play. When we do this, RLGym will expect us to provide 2 actions, and we expect it will give us 2 rewards and 2 observations.
+Now we want to spawn a second agent that we control by enabling self-play. When we do this, RLGym will expect us to provide 2 actions, and we expect it will give us 2 rewards and 2 observations at each step. Let's see how this changes the shape of our rewards and observations.
 ```python
 >>> import rlgym
 >>> import numpy as np
@@ -41,16 +41,16 @@ Now we want to spawn a second agent that we control by enabling self-play. When 
 ```
 We can see that RLGym has given us a list of 2 rewards and 2 observations, just as we expected. Interestingly, the length of each observation has changed from 21 to 30. This is because the `DefaultObs` class will expand the length of an observation to fit more players as we add them.
 
-Note that `RewardFunction` and `ObsBuilder` objects accept a `PlayerData` object when computing a reward and building an observation. The purpose of this is to allow users to construct returns from the perspective of each agent individually.
+Note that `RewardFunction` and `ObsBuilder` objects accept a `PlayerData` object when computing a reward and building an observation. The purpose of this is to allow users to construct rewards and observations for each agent individually, rather than using the same logic across all agents.
 The order of the rewards and observations at each step is the same as the order of the actions that were passed in.
 
 e.g.
 ```python
-reward[0], new_obs[0] -> actions[0]
-reward[1], new_obs[1] -> actions[1]
+new_obs[0], reward[0] -> actions[0]
+new_obs[1], reward[1] -> actions[1]
 ```
 
-The behavior of RLGym will be exactly the same if we want to add more players to each team. Let's consider the case of a 3v3 game with self-play enabled:
+The behavior of RLGym will continue in this fashion if we want to add more players to each team. Let's consider the case of a 3v3 game with self-play enabled.
 ```python
 >>> import rlgym
 >>> import numpy as np
