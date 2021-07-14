@@ -14,8 +14,8 @@ get_final_reward(self, player: PlayerData, state: GameState, previous_action: np
 ```
 These methods are called by an RLGym environment during an episode.
 
-To make a custom reward function, simply inherit from the base class and implement the above methods.
-As an example, let's create a simple reward function that will reward the agent for gaining speed
+To make a custom reward function, just inherit from the base class and implement the above methods.
+As an example, let's create a simple reward function that will reward the agent for gaining speed.
 
 ```python
 from rlgym.utils.reward_functions import RewardFunction
@@ -28,14 +28,14 @@ class SpeedReward(RewardFunction):
 
   def get_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:
     linear_velocity = player.car_data.linear_velocity
-    reward = math.vec_mag(linear_velocity)
+    reward = math.vecmag(linear_velocity)
     
     return reward
     
   def get_final_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:
     return 0
 ```
-Now we can simply pass an instance of our reward function to RLGym when we make an environment
+Now we can simply pass an instance of our reward function to RLGym when we make an environment.
 ```python
 import rlgym
 
