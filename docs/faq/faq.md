@@ -11,6 +11,12 @@ to take an enormous amount of compute and time.
 
 ***
 
+#### How can I run my bot in RLBot?
+
+You just have to put your trained model inside our [RLBot example bot](https://github.com/RLGym/RLGymExampleBot) and run it!
+
+***
+
 #### Can I train my bot against RLBot agents?
 
 Not at the moment, but it should be possible to write a wrapper that transforms RLGym data into an RLBot game packet.
