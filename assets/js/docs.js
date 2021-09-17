@@ -30,7 +30,7 @@ const docs = [
 		]
 	},
     
-    {
+    	{
 		id: 'tools',
 		files: [
 			'docs/tools/introduction_to_rlgym_tools.md',
@@ -39,7 +39,7 @@ const docs = [
             'docs/tools/reward_functions.md',
             'docs/tools/observation_builders.md',
 		]
-	}
+	},
     
 	{
 		id: 'faq',
