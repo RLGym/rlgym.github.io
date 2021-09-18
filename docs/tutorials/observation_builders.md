@@ -16,7 +16,8 @@ Implementing a custom `ObsBuilder` is just as easy as implementing a custom `Rew
 As an example, let's write an observation builder that contains the physics state of the ball and every player in the match.
 ```python
 from rlgym.utils.obs_builders import ObsBuilder
-
+from rlgym.utils.gamestates import PlayerData, GameState
+import numpy as np
 
 class CustomObsBuilder(ObsBuilder):
   def reset(self, initial_state: GameState):
@@ -52,6 +53,8 @@ Let's take a look at an example of implementing an observation builder that will
 ```python
 from rlgym.utils.obs_builders import ObsBuilder
 from rlgym.utils import common_values
+from rlgym.utils.gamestates import PlayerData, GameState
+import numpy as np
 
 
 class CustomObsBuilderBluePerspective(ObsBuilder):
