@@ -66,3 +66,5 @@ And just like that a Rocket League agent is being trained!
 The default configuration of RLGym will not produce a competent game-playing agent. This configuration is meant as a testing ground for users to quickly verify that they have installed RLGym successfully, and their learning algorithm is working. When the default reward is maximized, the agent should have zero angular velocity at all times.
 
 To train a game-playing agent, users will need to configure an RLGym environment with an appropriate [Reward Function](https://rlgym.github.io/docs-page.html#reward-functions), [Observation Builder](https://rlgym.github.io/docs-page.html#observation-builders), and a set of [Terminal Conditions](https://rlgym.github.io/docs-page.html#terminal-conditions). To learn about configuring a custom environment, read through our [Tutorials](https://rlgym.github.io/docs-page.html#tutorials).
+
+If you have any questions, comments, or just want to share your cool projects with us, we'd love to hear from you over on our [community discord](https://discord.gg/NjAHcP32Ae)!
