@@ -20,6 +20,8 @@ As an example, let's create a simple reward function that will reward the agent 
 ```python
 from rlgym.utils.reward_functions import RewardFunction
 from rlgym.utils import math
+from rlgym.utils.gamestates import GameState, PlayerData
+import numpy as np
 
 
 class SpeedReward(RewardFunction):
