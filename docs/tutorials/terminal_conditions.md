@@ -15,6 +15,7 @@ To write a custom terminal condition, inherit from the parent class and implemen
 As an example, let's implement a custom terminal condition that will end an episode as soon as any player touches the ball.
 ```python
 from rlgym.utils.terminal_conditions import TerminalCondition
+from rlgym.utils.gamestates import GameState
 
 
 class CustomTerminalCondition(TerminalCondition):
