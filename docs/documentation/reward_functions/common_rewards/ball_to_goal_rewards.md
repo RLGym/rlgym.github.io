@@ -16,14 +16,14 @@ from rlgym.utils.reward_functions.common_rewards import LiuDistancePlayerToBallR
 liu_distance = LiuDistancePlayerToBallReward()
 ```
 
-1. Determine which team the player is on, and set the target goal as the objective.
+1. Determine which team the agent is on, and set the opponent's goal as the objective.
 2. Compute the normalized distance between the position of the ball, and the center of the opponent's goal. Note that the point returned is in the center of the net, shifted to the back wall inside the net, such that the distance between the ball and the objective can never be zero.
 
 ```python
 dist = np.linalg.norm(state.ball.position - objective) - (BACK_NET_Y - BACK_WALL_Y + BALL_RADIUS)
 ```
 
-3. Return e^(-distance*0.5 / max_ball_speed)
+3. Return `e^(-distance*0.5 / max_ball_speed)`
 
 ```python
 return np.exp(-0.5 * dist / BALL_MAX_SPEED)
@@ -43,7 +43,7 @@ from rlgym.utils.reward_functions.common_rewards import VelocityBallToGoalReward
 velocity_ball_goal_reward = VelocityBallToGoalReward()
 ```
 
-1. Determine which team the player is on, and set the target goal as the objective.
+1. Determine which team the agent is on, and set the opponent's goal as the objective.
 2. Get the linear velocity of the ball.
 3. Determine the difference between the objective (goal from step 1) and the current ball position.
 4. Return the scalar projection of the ball's velocity vector on to the objective vector.
