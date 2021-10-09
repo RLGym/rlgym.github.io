@@ -21,6 +21,7 @@ For convenience, all the `make` parameters and their types are listed here:
 - obs_builder: object = DefaultObs(),
 - path_to_rl: str = None,
 - use_injector: bool = False
+- force_paging: bool = False
 
 ## Interacting With the Game
 To interact with the game, simply treat it like any other OpenAI Gym environment:
