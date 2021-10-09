@@ -1,10 +1,10 @@
 # Conditional rewards
 
-Conditional rewards are rewards issued when a condition is met :zany_face:
+Conditional rewards are rewards issued when a condition is met.
 
 ## [Custom Conditional Reward Classes](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/conditional_rewards.py#L10)
 
-Conditional rewards require that you provide a reward function, and a condition. If the condition is met, the reward function will be called and reward dealt to the model. Other wise no reward will be provided.
+Conditional rewards require that you provide a reward function, and a condition. If the condition is met, the reward function will be called and reward dealt to the model. Otherwise no reward will be provided.
 
 ```python
 class ConditionalRewardFunction(RewardFunction):
@@ -24,16 +24,14 @@ class ConditionalRewardFunction(RewardFunction):
 
 ## [Reward If Closest To Ball](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/conditional_rewards.py#L33)
 
-Return true if the current player is the closest player to the ball
+Return `True` if the current player is the closest player to the ball
 
 ```python
 RewardIfClosestToBall(reward_func: RewardFunction, team_only=True)
 ```
 
 ```python
-from rlgym.utils.reward_functions.conditional_rewards import (
-    RewardIfClosestToBall
-)
+from rlgym.utils.reward_functions.conditional_rewards import RewardIfClosestToBall
 
 reward_if_closest = RewardIfClosestToBall(reward_func)
 ```
@@ -45,9 +43,7 @@ RewardIfTouchedLast()
 ```
 
 ```python
-from rlgym.utils.reward_functions.conditional_rewards import (
-    RewardIfTouchedLast
-)
+from rlgym.utils.reward_functions.conditional_rewards import RewardIfTouchedLast
 
 reward_if_touched_last = RewardIfTouchedLast()
 ```
@@ -59,9 +55,7 @@ RewardIfBehindBall()
 ```
 
 ```python
-from rlgym.utils.reward_functions.conditional_rewards import (
-    RewardIfBehindBall
-)
+from rlgym.utils.reward_functions.conditional_rewards import RewardIfBehindBall
 
 reward_if_behind_ball = RewardIfBehindBall()
 ```
