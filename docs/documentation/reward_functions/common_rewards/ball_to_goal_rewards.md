@@ -1,6 +1,6 @@
 # Ball to goal rewards
 
-Ball to goal rewards are rewards computed on some metric measuring relationships between the balls state and the position of the goal
+Ball to goal rewards are functions that measure some relationship between the ball and the opponent's goal.
 
 ## [Liu Distance Ball To Goal Reward](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/ball_goal_rewards.py#L9)
 
@@ -18,20 +18,20 @@ from rlgym.utils.reward_functions.common_rewards import (
 liu_distance = LiuDistancePlayerToBallReward()
 ```
 
-1. Initializes by checking which team the player is on to direct which goal is our objective
-2. Computes a normalized distance between the balls current position, and the position of the objective goal, subtracted by (height of back of net - back wall of net height + ball radius)
+1. Determine which team the player is on, and set the target goal as the objective.
+2. Compute the normalized distance between the position of the ball, and the center of the opponent's goal. Note that the point returned is in the center of the net, shifted to the back wall inside the net, such that the distance between the ball and the objective can never be zero.
 
 ```python
 dist = np.linalg.norm(state.ball.position - objective) - (BACK_NET_Y - BACK_WALL_Y + BALL_RADIUS)
 ```
 
-3. returns distance raised to distance \*\* (-0.5 / max ball speed)
+3. Return e^(-distance*0.5 / max_ball_speed)
 
 ```python
 return np.exp(-0.5 * dist / BALL_MAX_SPEED)
 ```
 
-this helps to the reward get larger as the distance between ball and goal gets smaller
+This results in an exponential curve which is at its maximum when the ball is closest to the center of the net.
 
 ## [Velocity Ball To Goal Reward](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/ball_goal_rewards.py#L29)
 
@@ -47,15 +47,10 @@ from rlgym.utils.reward_functions.common_rewards import (
 velocity_ball_goal_reward = VelocityBallToGoalReward()
 ```
 
-1. Initializes by checking which team the player is on to direct which goal is our objective
-2. Gets the linear velocity of the ball
-3. Determines difference between objective (goal from step 1) and current ball position
-4. IF use_scalar_projection
-    1. Compute scalar projection between velocity of ball and positio difference
-5. ELSE
-    1. Compute normalized position difference between position difference computed in step 3 divided by the normalized position difference from step 3
-    2. Divide velocity by max ball speed
-    3. return the dot produce of the normalized position diff and the normalized velocity
+1. Determine which team the player is on, and set the target goal as the objective.
+2. Get the linear velocity of the ball.
+3. Determine the difference between the objective (goal from step 1) and the current ball position.
+4. Return the scalar projection of the ball's velocity vector on to the objective vector.
 
 ## [Ball Y Coordinate Reward](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/ball_goal_rewards.py#L60)
 
