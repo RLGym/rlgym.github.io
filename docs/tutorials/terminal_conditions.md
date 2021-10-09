@@ -46,7 +46,7 @@ environment, and we're done!
 
 ```python
 import rlgym
-from rlgym.utils.timeout_conditions.common_conditions import TimeoutCondition
+from rlgym.utils.terminal_conditions.common_conditions import TimeoutCondition
 
 default_tick_skip = 8
 physics_ticks_per_second = 120
