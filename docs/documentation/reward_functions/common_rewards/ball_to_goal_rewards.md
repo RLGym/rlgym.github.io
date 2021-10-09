@@ -11,9 +11,7 @@ LiuDistanceBallToGoalReward(own_goal=False):
 ```
 
 ```python
-from rlgym.utils.reward_functions.common_rewards import (
-    LiuDistancePlayerToBallReward,
-)
+from rlgym.utils.reward_functions.common_rewards import LiuDistancePlayerToBallReward
 
 liu_distance = LiuDistancePlayerToBallReward()
 ```
@@ -40,9 +38,7 @@ VelocityBallToGoalReward(own_goal=False, use_scalar_projection=False)
 ```
 
 ```python
-from rlgym.utils.reward_functions.common_rewards import (
-    VelocityBallToGoalReward
-)
+from rlgym.utils.reward_functions.common_rewards import VelocityBallToGoalReward
 
 velocity_ball_goal_reward = VelocityBallToGoalReward()
 ```
@@ -59,9 +55,7 @@ BallYCoordinateReward(exponent=1)
 ```
 
 ```python
-from rlgym.utils.reward_functions.common_rewards import (
-    BallYCoordinateReward
-)
+from rlgym.utils.reward_functions.common_rewards import BallYCoordinateReward
 
 ball_y_reward = BallYCoordinateReward()
 ```
