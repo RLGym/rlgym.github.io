@@ -18,6 +18,6 @@ When launching through steam, do not pass the location of `RocketLeague.exe` to 
 
 ***
 
-#### I can launch one instance perfectly fine, but when I try to launch multiple instances, each game window hangs before crashing.
+#### When I try to launch multiple instances of the game, each window hangs before crashing.
 
-Make sure you are using the Epic version of Rocket League. Steam does not support multiple instances of the same game client being open simultaneously.
+Make sure you are using the Epic version of Rocket League. Steam does not support launching multiple instances of the same game client.
