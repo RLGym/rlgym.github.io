@@ -9,23 +9,22 @@ If we're interested in training an agent to accomplish some task by mastering in
 To specify the max number of steps that each reward function should be present for, just pass the value as an `int` to the `AnnealRewards` constructor in a list with the `RewardFunction` objects. Let's look at an example where we set up an `AnnealRewards` object to  smoothly transition the reward function from `VelocityReward` to `VelocityPlayerToBallReward`.
 
 ```python
-
 import rlgym
 from rlgym_tools.extra_rewards import AnnealRewards
-from rlgym.utils.reward_functions.common_rewards import VelocityReward, VelocityPlayerToBallReward
+from rlgym.utils.reward_functions.common_rewards import VelocityPlayerToBallReward, TouchBallReward
 
-# These are arbitrary values that may not result in a good model.
-vel_max_steps = 100_000
-vel_to_ball_max_steps = 100_000
+def anneal_rewards_fn():
+    
+    # These are arbitrary values that may not result in a good model.
+    max_steps = 100_000
+    reward1 = VelocityPlayerToBallReward()
+    reward2 = TouchBallReward(aerial_weight=0.2)
 
-reward1 = VelocityReward()
-reward2 = VelocityPlayerToBallReward()
+    alternating_rewards_steps = [reward1, max_steps, reward2]
 
-alternating_rewards_steps = [reward1, vel_max_steps, reward2, vel_to_ball_max_steps]
+    return AnnealRewards(*alternating_rewards_steps, mode=AnnealRewards.STEP)
 
-anneal_reward = AnnealRewards(alternating_rewards_steps, mode=AnnealRewards.STEP)
-
-env = rlgym.make(reward_fn=anneal_reward)
+env = rlgym.make(reward_fn=anneal_rewards_fn())
 ```
 
 ### DiffReward
