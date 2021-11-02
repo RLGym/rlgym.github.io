@@ -18,6 +18,6 @@ When launching through steam, do not pass the location of `RocketLeague.exe` to 
 
 ***
 
-#### I have both the Epic and Steam versions of Rocket League installed, but RLGym will only launch the Epic version.
+#### I can launch one instance perfectly fine, but when I try to launch multiple instances, each game window hangs before crashing.
 
-RLGym will always launch the Epic version of Rocket League when it is able. Make sure to ping @Aech9835 in the RLBot Discord ceaselessly until this is fixed.
+Make sure you are using the Epic version of Rocket League. Steam does not support multiple instances of the same game client being open simultaneously.
