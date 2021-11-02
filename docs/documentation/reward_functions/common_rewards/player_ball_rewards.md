@@ -53,7 +53,7 @@ TouchBallReward(aerial_weight=0.)
 ```
 
 ```python
-from rlgym.utils.reward_functions.player_ball_rewards import TouchBallReward
+from rlgym.utils.reward_functions.common_rewards.player_ball_rewards import TouchBallReward
 
 touch_ball_reward = TouchBallReward()
 ```
