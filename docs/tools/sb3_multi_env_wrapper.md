@@ -1,8 +1,8 @@
 ## Using SB3 with Multiple Game Instances
 
-Most consumer hardware is capable of running more than just one instance of Rocket League at a time, and we would like to take advantage of that when training an agent for complex tasks like playing the game effectively. Fortunately, SB3 supports with multi-processing natively, so we can use the `rlgym-tools` multi-instance wrapper to take advantage of that.
+Most consumer hardware is capable of running more than just one instance of Rocket League at a time, and we would like to take advantage of that when training an agent for complex tasks like playing the game effectively. Fortunately, SB3 supports multi-processing natively, so we can use the `rlgym-tools` multi-instance wrapper to launch as many parallel game instances as we like.
 
-Using this wrapper requires us to make a special function that, when called, will construct a `rlgym.envs.Match` object with all the necessary settings and objects. This is because RLGym needs each instance of the environment to exist in an independent process, so our wrapper will use this function to create each environment after its process has been spawned. Let's look at an example for how to use the `SB3MultipleInstanceEnv` with the SB3 implementation of  PPO to train an agent for 1,000,000 timesteps with 2 instances of the game open.
+Using this wrapper requires us to make a special function that will construct a `rlgym.envs.Match` object with all the necessary settings and objects. This is because RLGym needs each instance of the environment to exist in an independent process, so our wrapper will use this function to create each environment after its process has been spawned. Let's look at an example for how to use the `SB3MultipleInstanceEnv` with the SB3 implementation of  PPO to train an agent for 1,000,000 timesteps with 2 instances of the game open.
 
 ```python
 # Here we import the Match object and our multi-instance wrapper
