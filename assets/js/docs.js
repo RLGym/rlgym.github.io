@@ -26,7 +26,7 @@ const docs = [
             'docs/tutorials/observation_builders.md',
             'docs/tutorials/terminal_conditions.md',
             'docs/tutorials/state_setters.md',
-
+            'docs/tutorials/action_parsers.md',
             'docs/tutorials/self_play.md',
         ],
     },
@@ -38,6 +38,7 @@ const docs = [
             'docs/tools/sb3_multi_env_wrapper.md',
             'docs/tools/reward_functions.md',
             'docs/tools/observation_builders.md',
+            'docs/tools/extra_action_parsers.md',
         ],
     },
     {

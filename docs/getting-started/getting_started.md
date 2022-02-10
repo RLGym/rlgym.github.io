@@ -19,6 +19,9 @@ For convenience, all the `make` parameters and their types are listed here:
 - terminal_conditions: List[object] = (TimeoutCondition(225), GoalScoredCondition()),
 - reward_fn: object = DefaultReward(),
 - obs_builder: object = DefaultObs(),
+- action_parser: object = DefaultAction(),
+- state_setter: object = DefaultState(),
+- launch_preference: str = LaunchPreference.EPIC,
 - path_to_rl: str = None,
 - use_injector: bool = False
 - force_paging: bool = False
