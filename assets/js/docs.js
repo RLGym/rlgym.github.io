@@ -34,6 +34,7 @@ const docs = [
         id: 'tools',
         files: [
             'docs/tools/introduction_to_rlgym_tools.md',
+            'docs/tools/saving_and_loading.md',
             'docs/tools/sb3_single_env_wrapper.md',
             'docs/tools/sb3_multi_env_wrapper.md',
             'docs/tools/reward_functions.md',
