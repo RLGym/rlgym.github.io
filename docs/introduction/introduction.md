@@ -11,7 +11,7 @@ RLGym communicates with a [Bakkesmod](https://www.bakkesmod.com/) plugin to cont
 * [Rocket League](https://www.rocketleague.com) (Both Steam and Epic are supported)
 * [Bakkesmod](https://www.bakkesmod.com)
 * The RLGym plugin for Bakkesmod (Installed automatically if downloading via pip)
-* Python >= 3.7
+* Python between versions 3.7 and 3.9 (3.10 not supported).
 
 ## Installation
 RLGym is available on pip, install via
