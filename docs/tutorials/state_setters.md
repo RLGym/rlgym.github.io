@@ -24,12 +24,12 @@ class CustomStateSetter(StateSetter):
         # Loop over every car in the game.
         for car in state_wrapper.cars:
             if car.team_num == BLUE_TEAM:
-                pos = desired_pos
+                pos = desired_car_pos
                 yaw = desired_yaw
                 
             elif car.team_num == ORANGE_TEAM:
                 # We will invert values for the orange team so our state setter treats both teams in the same way.
-                pos = [-1*coord for coord in desired_pos]
+                pos = [-1*coord for coord in desired_car_pos]
                 yaw = -1*desired_yaw
                 
             # Now we just use the provided setters in the CarWrapper we are manipulating to set its state. Note that here we are unpacking the pos array to set the position of 
