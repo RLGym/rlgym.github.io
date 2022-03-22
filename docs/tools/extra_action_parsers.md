@@ -5,7 +5,7 @@
 
 ### KBMAction
 
-A Keyboard and Mouse action parser. It combines that combines several actions, expecting 5 inputs rather
+A Keyboard and Mouse action parser that combines several actions, expecting 5 inputs rather
 than the usual 8.
 
 * throttle/pitch
