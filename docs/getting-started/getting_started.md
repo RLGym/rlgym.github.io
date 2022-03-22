@@ -48,7 +48,7 @@ while True:
 ```
 
 ## Training a Simple Agent with PPO
-You can now train an agent with your learning aglorithm of choice! Because RLGym follows the OpenAI Gym API, any of the common Reinforcement Learning libraries should be supported.
+You can now train an agent with your learning algorithm of choice! Because RLGym follows the OpenAI Gym API, any of the common Reinforcement Learning libraries should be supported.
 The following is an example of how to train an agent in the default RLGym environment using an implementation of PPO from the [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/) library.
 
 ```python
