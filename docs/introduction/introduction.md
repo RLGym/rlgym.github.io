@@ -14,7 +14,9 @@ RLGym communicates with a [Bakkesmod](https://www.bakkesmod.com/) plugin to cont
 * Python between versions 3.7 and 3.9 (3.10 not supported).
 
 ## Installation
-RLGym is available on pip, install via
+If you are interested in playing against Nexto or other bots, please visit [RLBot](https://rlbot.org/).
+
+If you are interested in training your own bots with RLGym, simply install via pip:
 ```python
 pip install rlgym
 ```
