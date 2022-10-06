@@ -25,8 +25,7 @@ Not at the moment, but it should be possible to write a wrapper that transforms 
 
 #### Can I train my bot against Psyonix agents?
 
-By default, when you build an RLGym environment with self-play disabled and the parameter `spawn_opponents=True`, all-star Psyonix bots will be spawned as opponents for however
-many players there are per team. Unfortunately, the Psyonix bots appear to become much worse when the game is sped up dramatically, so it is difficult to meaningfully train against them.
+Not at this time.
 
 ***
 
