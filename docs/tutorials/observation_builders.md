@@ -83,4 +83,4 @@ class CustomObsBuilderBluePerspective(ObsBuilder):
 
 Now we can use the same agent to control both teams without having to modify our observation builder!
 
-While these `ObsBuilder` examples show how a user can build an observation containing all the necessary physics information about the game, users might want to build observations containing different data. To look at what data is available, please refer to our [Game State Documentation]().
+While these `ObsBuilder` examples show how a user can build an observation containing all the necessary physics information about the game, users might want to build observations containing different data. To look at what data is available, please refer to our [Game State Documentation](/).

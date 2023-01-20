@@ -1,3 +1,7 @@
+---
+title: Troubleshooting
+---
+
 #### The game launches, but nothing else happens and no error is thrown.
 
 You may not have enabled the RLGym plugin. From inside the game, press F2 to open the Bakkesmod menu and navigate to the `plugins` tab.
