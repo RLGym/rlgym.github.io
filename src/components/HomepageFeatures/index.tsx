@@ -1,6 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
 import {
     faBook,
     faLaptopCode,
@@ -8,7 +6,7 @@ import {
     faMapSigns,
     faRocket, faTools,
     IconDefinition
-} from '@fortawesome/free-solid-svg-icons';;
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "@docusaurus/Link";
 
@@ -84,31 +82,28 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, Svg, description, link}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <Link
-          to={link}>
-      <div className="text--center">
-        <FontAwesomeIcon icon={Svg} />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      <Link to={link} style={{ height: '100%', textDecoration: 'none' }} >
+          <div style={{ height: '100%', padding: 12, color: 'var(--ifm-font-color-base)' }} >
+              <div className={'card'} style={{ height: '100%', backgroundColor: '' }}>
+                    <div className={'card__header'}><FontAwesomeIcon icon={Svg}  style={{ color: "var(--ifm-breadcrumb-color-active)"}}/> {title}</div>
+                    <div className={'card__body'}>
+                        <p>{description}</p></div>
+              </div>
+          </div>
       </Link>
-    </div>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={props.title} {...props} />
-          ))}
-        </div>
+      <div className={'container'}>
+          <div className={'row'}>
+              {FeatureList.map((props) => (
+                  <div className={'col col--4'} key={props.title}>
+                    <Feature {...props} />
+                  </div>
+              ))}
+          </div>
       </div>
-    </section>
   );
 }

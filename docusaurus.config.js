@@ -71,9 +71,9 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/RLGym/rlgym.github.io',
-            label: 'GitHub',
+            type: 'html',
             position: 'right',
+            value: '<a href="https://pypi.org/project/rlgym/" class="button button--primary">Download</a>',
           },
         ],
       },
@@ -105,9 +105,13 @@ const config = {
             title: 'Contribute',
             items: [
               {
-                label: 'GitHub',
+                label: 'GitHub - API',
                 href: 'https://github.com/lucas-emery/rocket-league-gym',
               },
+              {
+                label: 'Github - Docs',
+                href: 'https://github.com/RLGym/rlgym.github.io'
+              }
             ],
           },
           {
