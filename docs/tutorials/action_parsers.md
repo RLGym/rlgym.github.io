@@ -1,3 +1,7 @@
+---
+title: Action Parsers
+---
+
 ## Action Parsers
 
 RLGym expects an array of 8 actions per agent on the pitch. Each action corresponds to one control input:

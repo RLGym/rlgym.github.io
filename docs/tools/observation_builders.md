@@ -1,3 +1,7 @@
+---
+title: Observation Builders
+---
+
 ## Extra Observation Builders
 
 `rlgym-tools` provides a number of community-made observation builders that are commonly used.

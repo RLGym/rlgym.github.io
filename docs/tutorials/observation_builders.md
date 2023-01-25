@@ -1,3 +1,8 @@
+---
+title: Observation Builders
+---
+
+
 ## Observation Builders
 An `ObsBuilder` is an object used by RLGym to transform the game state into an input for the agent at every step. Observation builders are used similarly to [Reward Functions](https://rlgym.github.io/docs-page.html#reward-functions)
 by the environment. At each step, the observation builder will be called once for every player in the current game state.

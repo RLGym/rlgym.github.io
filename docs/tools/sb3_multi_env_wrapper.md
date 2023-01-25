@@ -1,3 +1,8 @@
+---
+title: SB3 with Multiple Game Instances
+---
+
+
 ## Using SB3 with Multiple Game Instances
 
 Most consumer hardware is capable of running more than just one instance of Rocket League at a time, and we would like to take advantage of that when training an agent for complex tasks like playing the game effectively. Fortunately, SB3 supports multi-processing natively, so we can use the `rlgym-tools` multi-instance wrapper to launch as many parallel game instances as we like.

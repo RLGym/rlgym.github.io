@@ -1,3 +1,7 @@
+---
+title: SB3 with a Single Game Instance
+---
+
 ## Using SB3 with a Single Game Instance
 
 Unfortunately, SB3 does not natively support the concept of self-play. However, `rlgym-tools` provides a wrapper to get around this by treating each agent in a single match as though it were its own environment within SB3. With this, we can train more than one copy of our agent in one instance of the game through self-play. Let's see how we can set up an RLGym environment, wrap it in the `SB3SingleInstanceEnv`,  and use the SB3 implementation of PPO to train it with self-play for 1,000,000 timesteps.

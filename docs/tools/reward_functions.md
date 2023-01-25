@@ -1,3 +1,7 @@
+---
+title: Rewards Functions
+---
+
 ## Extra Rewards
 
 `rlgym-tools` comes with a number of potentially useful reward functions which are not packaged directly with RLGym. Here we will provide a brief summary of each reward function and how to use it.
