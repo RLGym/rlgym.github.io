@@ -28,6 +28,16 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+      'docusaurus-plugin-sass',
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        // Options here
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',

@@ -10,6 +10,12 @@
   overflow: hidden;
 }
 
+.headerColors {
+  h1, h2, h3, h4, h5 {
+    color: var(--ifm-color-emphasis-100);
+  }
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

@@ -84,10 +84,16 @@ function Feature({title, Svg, description, link}: FeatureItem) {
   return (
       <Link to={link} style={{ height: '100%', textDecoration: 'none' }} >
           <div style={{ height: '100%', padding: 12, color: 'var(--ifm-font-color-base)' }} >
-              <div className={'card'} style={{ height: '100%', backgroundColor: '' }}>
-                    <div className={'card__header'}><FontAwesomeIcon icon={Svg}  style={{ color: "var(--ifm-breadcrumb-color-active)"}}/> {title}</div>
-                    <div className={'card__body'}>
-                        <p>{description}</p></div>
+              <div className={'card shadow--lw'} style={{ height: '100%' }}>
+                  <div className={'card__header'} style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                      <div style={{borderRadius: '30px', height: '60px', width: '60px', display: 'flex', justifyContent: 'center', alignItems:'center'}}>
+                          <FontAwesomeIcon icon={Svg}  style={{ fontSize: '30px', color: "var(--ifm-breadcrumb-color-active)"}}/>
+                      </div>
+                      <h3 style={{flex: 1, paddingLeft: '1em'}}>{title}</h3>
+                  </div>
+                  <div className={'card__body'}>
+                    <p>{description}</p>
+                  </div>
               </div>
           </div>
       </Link>

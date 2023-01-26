@@ -1,3 +1,7 @@
+---
+title: State Setters
+---
+
 ## State Setters
 
 In some cases, we may want to directly manipulate the state of the game to train an agent to perform some task. To facilitate this, RLGym can be configured with a `StateSetter` object that will determine the initial state of the game every time `env.reset()` is called. To make one, all we have to do is override the abstract class and implement its method, just like all the other configuration objects in RLGym.

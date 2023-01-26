@@ -1,3 +1,7 @@
+---
+title: Reward Functions
+---
+
 ## Reward Functions
 A `RewardFunction` is an object used by RLGym to compute the reward for each action every step. 
 

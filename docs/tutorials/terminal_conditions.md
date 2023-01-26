@@ -1,3 +1,7 @@
+---
+title: Terminal Conditions
+---
+
 ## Terminal Conditions
 A `TerminalCondition` is a simple object that examines the current game state and returns `True` if that state should be the final state in an episode, and `False` otherwise.
 Terminal conditions can be paired together in a list, in which case an episode will be terminated if any of the provided terminal conditions are evaluated to `True`.
