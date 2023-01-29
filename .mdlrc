@@ -1,2 +1,2 @@
 # Enable all rules by default
-all
+rules "~MD013"
