@@ -1,6 +1,4 @@
----
-title: Using stable-baselines3
----
+# Using stable-baselines3
 
 ## Single Game Instance
 

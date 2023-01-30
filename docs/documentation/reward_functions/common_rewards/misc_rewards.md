@@ -4,7 +4,8 @@ Misc rewards.
 
 ## [Velocity Reward](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/misc_rewards.py#L56)
 
-Velocity reward is a simple function to make sure models can be trained. The velocity reward function returns either the positive or negative magnitude of the agent's velocity, determined by the `negative` flag in the constructor.
+Velocity reward is a simple function to make sure models can be trained.
+The velocity reward function returns either the positive or negative magnitude of the agent's velocity, determined by the `negative` flag in the constructor.
 ```python
 VelocityReward(negative=False)
 ```
@@ -17,7 +18,8 @@ velocity_reward = VelocityReward()
 
 ## [Save Boost Reward](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/misc_rewards.py#L69)
 
-Each step the agent is rewarded with `sqrt(player.boost_amount)`. We take the square root here because, intuitively, the difference between 0 and 20 boost is more impactful on the game than the difference between 80 and 100 boost.
+Each step the agent is rewarded with `sqrt(player.boost_amount)`.
+We take the square root here because, intuitively, the difference between 0 and 20 boost is more impactful on the game than the difference between 80 and 100 boost.
 
 ```python
 SaveBoostReward()

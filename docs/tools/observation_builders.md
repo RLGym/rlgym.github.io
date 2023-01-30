@@ -8,7 +8,8 @@ title: Observation Builders
 
 ### GeneralStacker
 
-This will stack the observations from an existing `ObsBuilder` over time into one long observation. To use it, we simply give it an `ObsBuilder` to stack and tell it how many steps we would like it to stack for.
+This will stack the observations from an existing `ObsBuilder` over time into one long observation.
+To use it, we simply give it an `ObsBuilder` to stack and tell it how many steps we would like it to stack for.
 
 ```python
 import rlgym

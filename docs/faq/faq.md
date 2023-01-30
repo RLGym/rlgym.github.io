@@ -64,5 +64,5 @@ while still providing information frequently enough that an agent can easily pic
 
 ## Can I train the same agent to play 1v1, 2v2, and 3v3?
 
-You can, but you will need to find a way to handle the change in the number of players present in the game. One user has already had success doing this with an [Attention Mechanism](https://en.wikipedia.org/wiki/Attention_(machine_learning)) which
-you can find [here](https://github.com/Rolv-Arild/EARL-pytorch).
+You can, but you will need to find a way to handle the change in the number of players present in the game.
+One user has already had success doing this with an [Attention Mechanism](https://en.wikipedia.org/wiki/Attention_(machine_learning)) which you can find [here](https://github.com/Rolv-Arild/EARL-pytorch).

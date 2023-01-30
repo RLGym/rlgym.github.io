@@ -1,8 +1,4 @@
----
-title: Extra Action Parsers
----
-
-## Extra Action Parsers
+# Extra Action Parsers
 
 `rlgym-tools` comes with action parsers which are not packaged directly with RLGym. Here we will provide a brief summary of each parser and how to use it.
 

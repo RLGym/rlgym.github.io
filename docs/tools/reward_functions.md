@@ -4,13 +4,19 @@ title: Rewards Functions
 
 ## Extra Rewards
 
-`rlgym-tools` comes with a number of potentially useful reward functions which are not packaged directly with RLGym. Here we will provide a brief summary of each reward function and how to use it.
+`rlgym-tools` comes with a number of potentially useful reward functions which are not packaged directly with RLGym.
+Here we will provide a brief summary of each reward function and how to use it.
 
 ### AnnealRewards
 
-If we're interested in training an agent to accomplish some task by mastering increasingly complex reward functions (as in [curriculum learning](https://jmlr.org/papers/volume21/20-212/20-212.pdf)), we may want to smoothly transition from one reward function to the next. AnnealRewards does this by weighting the current reward stage with the next one as `y*current_reward + (1 - y)*current_reward` where `y = counter / max_count`. The counter used here can be specified through one of three modes: `STEP`, `TOUCH`, and `GOAL`. At each call to `AnnealRewards.get_reward()`, the counter is incremented based on the mode provided. The `STEP` mode will cause the counter to be incremented by 1 at every call to `get_reward`, the `TOUCH` mode will increment the counter every time the player touches the ball, and the `GOAL` mode will increment the counter every time the player scores a goal.
+If we're interested in training an agent to accomplish some task by mastering increasingly complex reward functions (as in [curriculum learning](https://jmlr.org/papers/volume21/20-212/20-212.pdf)), we may want to smoothly transition from one reward function to the next.
+AnnealRewards does this by weighting the current reward stage with the next one as `y*current_reward + (1 - y)*current_reward` where `y = counter / max_count`.
+The counter used here can be specified through one of three modes: `STEP`, `TOUCH`, and `GOAL`.
+At each call to `AnnealRewards.get_reward()`, the counter is incremented based on the mode provided.
+The `STEP` mode will cause the counter to be incremented by 1 at every call to `get_reward`, the `TOUCH` mode will increment the counter every time the player touches the ball, and the `GOAL` mode will increment the counter every time the player scores a goal.
 
-To specify the max number of steps that each reward function should be present for, just pass the value as an `int` to the `AnnealRewards` constructor in a list with the `RewardFunction` objects. Let's look at an example where we set up an `AnnealRewards` object to  smoothly transition the reward function from `VelocityReward` to `VelocityPlayerToBallReward`.
+To specify the max number of steps that each reward function should be present for, just pass the value as an `int` to the `AnnealRewards` constructor in a list with the `RewardFunction` objects.
+Let's look at an example where we set up an `AnnealRewards` object to  smoothly transition the reward function from `VelocityReward` to `VelocityPlayerToBallReward`.
 
 ```python
 import rlgym
@@ -33,7 +39,8 @@ env = rlgym.make(reward_fn=anneal_rewards_fn())
 
 ### DiffReward
 
-This simple function will return the difference in reward between time steps (e.g. reward_at_t1 - reward_at_t0). This may be useful if we're interested in rewarding the agent for its acceleration, rather than velocity.
+This simple function will return the difference in reward between time steps (e.g. reward_at_t1 - reward_at_t0).
+This may be useful if we're interested in rewarding the agent for its acceleration, rather than velocity.
 
 Example:
 ```python
@@ -49,7 +56,8 @@ env = rlgym.make(reward_fn=accel_reward)
 
 ### DistributeRewards
 
-This reward is similar to the method used by OpenAI Five to distribute the credit of a reward during a team game across the agents in the match. Read Appendix G from [their paper](https://arxiv.org/pdf/1912.06680.pdf) to learn more.
+This reward is similar to the method used by OpenAI Five to distribute the credit of a reward during a team game across the agents in the match.
+Read Appendix G from [their paper](https://arxiv.org/pdf/1912.06680.pdf) to learn more.
 
 Example:
 ```python

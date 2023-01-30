@@ -1,2 +1,8 @@
 # Enable all rules by default
-rules "~MD013"
+all
+
+# Extend line length, since each sentence should be on a separate line.
+rule 'MD013', :line_length => 99999
+
+# Allow in-line HTML
+exclude_rule 'MD033'

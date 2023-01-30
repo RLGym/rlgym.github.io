@@ -17,17 +17,18 @@ liu_distance = LiuDistancePlayerToBallReward()
 ```
 
 1. Determine which team the agent is on, and set the opponent's goal as the objective.
-2. Compute the normalized distance between the position of the ball, and the center of the opponent's goal. Note that the point returned is in the center of the net, shifted to the back wall inside the net, such that the distance between the ball and the objective can never be zero.
+2. Compute the normalized distance between the position of the ball, and the center of the opponent's goal.
+3. Note that the point returned is in the center of the net, shifted to the back wall inside the net, such that the distance between the ball and the objective can never be zero.
 
-```python
-dist = np.linalg.norm(state.ball.position - objective) - (BACK_NET_Y - BACK_WALL_Y + BALL_RADIUS)
-```
+    ```python
+    dist = np.linalg.norm(state.ball.position - objective) - (BACK_NET_Y - BACK_WALL_Y + BALL_RADIUS)
+    ```
 
-3. Return `e^(-distance*0.5 / max_ball_speed)`
+3. Return `e^(-distance*0.5 / max_ball_speed)` $e^{\frac {- \text{distance} * 0.5} { \text{max\_ball\_speed}} }$
 
-```python
-return np.exp(-0.5 * dist / BALL_MAX_SPEED)
-```
+    ```python
+    return np.exp(-0.5 * dist / BALL_MAX_SPEED)
+    ```
 
 This results in an exponential curve which is at its maximum when the ball is closest to the center of the net.
 
