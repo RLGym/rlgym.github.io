@@ -43,6 +43,16 @@ const config = {
         // Options here
       },
     ],
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'tools',
+        path: 'tools',
+        routeBasePath: 'tools',
+        sidebarPath: require.resolve('./sidebars.js'),
+      }),
+    ]
   ],
 
   presets: [
@@ -96,6 +106,11 @@ const config = {
             docId: 'introduction',
             position: 'left',
             label: 'Documentation',
+          },
+          {
+            to: '/tools/tools',
+            label: 'Tools',
+            position: 'left'
           },
           {
             to: '/blog',

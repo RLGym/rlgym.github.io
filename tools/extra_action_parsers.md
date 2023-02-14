@@ -1,9 +1,9 @@
 # Extra Action Parsers
 
-`rlgym-tools` comes with action parsers which are not packaged directly with RLGym. Here we will provide a brief summary of each parser and how to use it.
+`rlgym-tools` comes with action parsers which are not packaged directly with RLGym.
+Here we will provide a brief summary of each parser and how to use it.
 
-
-### KBMAction
+## KBMAction
 
 A Keyboard and Mouse action parser that combines several actions, expecting 5 inputs rather
 than the usual 8.

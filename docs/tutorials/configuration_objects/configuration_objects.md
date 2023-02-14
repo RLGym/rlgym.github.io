@@ -1,9 +1,5 @@
----
-title: Configuration Objects
----
+# Configuration Objects
 
-
-## Configuration Objects
 At their core, RLGym environments are configured with 3 basic objects:
 1. A [RewardFunction](https://rlgym.github.io/docs-page.html#reward-functions)
 2. An [ObsBuilder](https://rlgym.github.io/docs-page.html#observation-builders)
