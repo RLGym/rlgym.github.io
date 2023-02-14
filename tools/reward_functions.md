@@ -1,6 +1,4 @@
----
-title: Rewards Functions
----
+# Rewards Functions
 
 ## Extra Rewards
 
@@ -43,6 +41,7 @@ This simple function will return the difference in reward between time steps (e.
 This may be useful if we're interested in rewarding the agent for its acceleration, rather than velocity.
 
 Example:
+
 ```python
 import rlgym
 from rlgym_tools.extra_rewards import DiffReward
@@ -60,6 +59,7 @@ This reward is similar to the method used by OpenAI Five to distribute the credi
 Read Appendix G from [their paper](https://arxiv.org/pdf/1912.06680.pdf) to learn more.
 
 Example:
+
 ```python
 import rlgym
 from rlgym_tools.extra_rewards import DistributeRewards
@@ -76,6 +76,7 @@ env = rlgym.make(reward_fn=distrib_reward)
 As the name implies, this will take any number of reward functions and return their product at each timestep.
 
 Example:
+
 ```python
 import rlgym
 from rlgym_tools.extra_rewards import MultiplyRewards

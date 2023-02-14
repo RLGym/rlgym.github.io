@@ -1,6 +1,7 @@
 # Configuration Objects
 
 At their core, RLGym environments are configured with 3 basic objects:
+
 1. A [RewardFunction](https://rlgym.github.io/docs-page.html#reward-functions)
 2. An [ObsBuilder](https://rlgym.github.io/docs-page.html#observation-builders)
 3. A list of [TerminalCondition](https://rlgym.github.io/docs-page.html#terminal-conditions) objects
@@ -12,6 +13,7 @@ RLGym uses these objects at every step.
 * When an episode should be terminated.
 
 The flowchart below depicts how each of these objects is used by RLGym.
+
 ```mermaid
 %%{
   init: {

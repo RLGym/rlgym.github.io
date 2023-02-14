@@ -1,16 +1,19 @@
----
-title: State Setters
----
+# State Setters
 
-## State Setters
-
-In some cases, we may want to directly manipulate the state of the game to train an agent to perform some task. To facilitate this, RLGym can be configured with a `StateSetter` object that will determine the initial state of the game every time `env.reset()` is called. To make one, all we have to do is override the abstract class and implement its method, just like all the other configuration objects in RLGym.
+In some cases, we may want to directly manipulate the state of the game to train an agent to perform some task.
+To facilitate this, RLGym can be configured with a `StateSetter` object that will determine the initial state of the game every time `env.reset()` is called.
+To make one, all we have to do is override the abstract class and implement its method, just like all the other configuration objects in RLGym.
 
 A `StateSetter` only has a single method:
+
 ```python
 def reset(self, state_wrapper: StateWrapper):
 ```
-This introduces us to a new type of object with the `StateWrapper`. This object contains a mutable representation of every physics object that RLGym can manipulate. When setting the state of the game, you will directly change the state of the objects contained by the `StateWrapper`. Let's look at an example where we will set the state of every car in the match, and the ball.
+
+This introduces us to a new type of object with the `StateWrapper`.
+This object contains a mutable representation of every physics object that RLGym can manipulate.
+When setting the state of the game, you will directly change the state of the objects contained by the `StateWrapper`.
+Let's look at an example where we will set the state of every car in the match, and the ball.
 
 ```python
 from rlgym.utils.state_setters import StateSetter
@@ -46,7 +49,8 @@ class CustomStateSetter(StateSetter):
         state_wrapper.ball.set_pos(x=0, y=0, z=CEILING_Z/2)
 ```
 
-And just like that we have configured a `StateSetter` that will spawn every car near the center of the field, and cause the ball to spawn in the air at the center of the field. To use this, all we have to do is pass it to RLGym just like we would with any other configuration object.
+And just like that we have configured a `StateSetter` that will spawn every car near the center of the field, and cause the ball to spawn in the air at the center of the field.
+To use this, all we have to do is pass it to RLGym just like we would with any other configuration object.
 
 ```python
 import rlgym

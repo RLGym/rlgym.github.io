@@ -3,11 +3,9 @@ title: Introduction
 sidebar_position: 1
 ---
 
-
 # What is RLGym?
 
 The Rocket League Gym is a [Python](https://www.python.org/) API that can be used to treat the game [Rocket League](https://www.rocketleague.com) as though it were an [OpenAI Gym](https://gym.openai.com)-style environment for [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning) projects.
-
 
 ## How it Works
 

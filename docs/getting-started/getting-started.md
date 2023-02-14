@@ -1,9 +1,11 @@
 ---
-title: "Getting Started"
 sidebar_position: 2
 ---
 
+# Getting Started
+
 ## Setting up an Environment
+
 Once RLGym is [installed](https://rlgym.github.io/docs-page.html#installation), simply import the library and call the `make()` function.
 ```python
 import rlgym
@@ -33,7 +35,9 @@ path_to_rl: str = None,
 use_injector: bool = False
 force_paging: bool = False
 ```
+
 ## Interacting With the Game
+
 To interact with the game, simply treat it like any other OpenAI Gym environment:
 
 ```python
@@ -55,6 +59,7 @@ while True:
 ```
 
 ## Training a Simple Agent with PPO
+
 You can now train an agent with your learning algorithm of choice! Because RLGym follows the OpenAI Gym API, any of the common Reinforcement Learning libraries should be supported.
 The following is an example of how to train an agent in the default RLGym environment using an implementation of PPO from the [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/) library.
 
