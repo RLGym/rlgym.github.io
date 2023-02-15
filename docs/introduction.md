@@ -9,7 +9,9 @@ The Rocket League Gym is a [Python](https://www.python.org/) API that can be use
 
 ## How it Works
 
-RLGym communicates with a [Bakkesmod](https://www.bakkesmod.com/) plugin to control the game while it is running. This enables the Python API to manipulate the game just like a standard Gym environment, with familiar functions like `make()`, `reset()` and `step()`. Bakkesmod also enables RLGym to control the rate at which the physics engine updates while the game is running, so matches inside the game can be run much faster than real-time.
+RLGym communicates with a [Bakkesmod](https://www.bakkesmod.com/) plugin to control the game while it is running.
+This enables the Python API to manipulate the game just like a standard Gym environment, with familiar functions like `make()`, `reset()` and `step()`.
+Bakkesmod also enables RLGym to control the rate at which the physics engine updates while the game is running, so matches inside the game can be run much faster than real-time.
 
 ## Requirements
 

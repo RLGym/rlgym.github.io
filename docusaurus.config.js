@@ -108,7 +108,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            to: '/tools/tools',
+            to: '/tools/introduction',
             label: 'Tools',
             position: 'left'
           },

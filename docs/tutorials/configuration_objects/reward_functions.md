@@ -1,6 +1,6 @@
 # Reward Functions
 
-A `RewardFunction` is an object used by RLGym to compute the reward for each action every step. 
+A `RewardFunction` is an object used by RLGym to compute the reward for each action every step.
 
 All reward functions must implement the following three methods:
 
@@ -34,9 +34,9 @@ class SpeedReward(RewardFunction):
   def get_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:
     linear_velocity = player.car_data.linear_velocity
     reward = math.vecmag(linear_velocity)
-    
+
     return reward
-    
+
   def get_final_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:
     return 0
 ```

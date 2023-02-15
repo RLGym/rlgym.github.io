@@ -7,12 +7,14 @@ sidebar_position: 2
 ## Setting up an Environment
 
 Once RLGym is [installed](https://rlgym.github.io/docs-page.html#installation), simply import the library and call the `make()` function.
+
 ```python
 import rlgym
 
 
 env = rlgym.make()
 ```
+
 This will configure Rocket League with the default parameters that come with RLGym.
 
 The `make` function comes with a number of optional parameters, which are explained in the [Documentation](https://rlgym.github.io/docs-page.html#documentation) section of the wiki.

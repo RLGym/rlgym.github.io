@@ -1,7 +1,7 @@
 # Saving and Loading
 
-Because RLGym is the interface for interacting with Rocket League, it does not deal with saving or loading models
-during training. You are responsible for deciding how to save or load your model. 
+Because RLGym is the interface for interacting with Rocket League, it does not deal with saving or loading models during training.
+You are responsible for deciding how to save or load your model.
 
 However, several common libraries you can use with RLGym have saving and loading functions built in:
 

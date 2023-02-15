@@ -26,7 +26,7 @@ learner.learn(1_000_000)
 
 ## Multiple Game Instances
 
-Most consumer hardware is capable of running more than just one instance of Rocket League at a time. 
+Most consumer hardware is capable of running more than just one instance of Rocket League at a time.
 We would like to take advantage of that when training an agent for complex tasks like playing the game effectively.
 Fortunately, SB3 supports multi-processing natively, so we can use the `rlgym-tools` multi-instance wrapper to launch as many parallel game instances as we like.
 
@@ -64,10 +64,10 @@ def get_match():
         terminal_conditions=[TimeoutCondition(225)],
         obs_builder=DefaultObs(),
         state_setter=DefaultState(),
-        
+
         self_play=True,
     )
-    
+
 
 #If we want to spawn new processes, we have to make sure our program starts in a proper Python entry point.
 if __name__ == "__main__":

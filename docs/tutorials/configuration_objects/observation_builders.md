@@ -1,8 +1,3 @@
----
-title: Observation Builders
----
-
-
 # Observation Builders
 
 An `ObsBuilder` is an object used by RLGym to transform the game state into an input for the agent at every step.
@@ -35,10 +30,10 @@ class CustomObsBuilder(ObsBuilder):
   def build_obs(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> Any:
     obs = []
     obs += state.ball.serialize()
-    
+
     for player in state.players:
       obs += player.car_data.serialize()
-    
+
     return np.asarray(obs, dtype=np.float32)
 ```
 
@@ -54,7 +49,8 @@ env = rlgym.make(obs_builder=CustomObsBuilder())
 
 And we're done!
 
-### Understanding Perspective
+## Understanding Perspective
+
 The observation builder we wrote above will work for many purposes, but when training a game-playing agent it can be useful to represent the game world from a common perspective so the agent can play on both the orange and blue teams without unnecessary learning time.
 Unfortunately, the observation builder we just wrote will return the physics state of every object from the perspective of the game world, so if our agent has learned to play on the blue team it may get confused if we ask it to play on the orange team.
 
@@ -77,24 +73,25 @@ class CustomObsBuilderBluePerspective(ObsBuilder):
 
   def build_obs(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> Any:
     obs = []
-    
+
     #If this observation is being built for a player on the orange team, we need to invert all the physics data we use.
     inverted = player.team_num == common_values.ORANGE_TEAM
-    
+
     if inverted:
       obs += state.inverted_ball.serialize()
     else:
       obs += state.ball.serialize()
-      
+
     for player in state.players:
       if inverted:
         obs += player.inverted_car_data.serialize()
       else:
         obs += player.car_data.serialize()
-    
+
     return np.asarray(obs, dtype=np.float32)
 ```
 
 Now we can use the same agent to control both teams without having to modify our observation builder!
 
-While these `ObsBuilder` examples show how a user can build an observation containing all the necessary physics information about the game, users might want to build observations containing different data. To look at what data is available, please refer to our [Game State Documentation](/).
+While these `ObsBuilder` examples show how a user can build an observation containing all the necessary physics information about the game, users might want to build observations containing different data.
+To look at what data is available, please refer to our [Game State Documentation](/).
