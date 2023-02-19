@@ -30,4 +30,7 @@ This command generates static content into the `build` directory and can be serv
 
 ## [First Deployment with GITHUB_TOKEN](https://github.com/marketplace/actions/github-pages-action#%EF%B8%8F-first-deployment-with-github_token)
 
+By default, it works with custom domains.
+Setting github project environment variable `BUILD_ENV` to `--github=true` will allow it to work under `<user>.github.io/rlgym.github.io`.
+
 ## [Adding posts](https://docusaurus.io/docs/blog#adding-posts)
