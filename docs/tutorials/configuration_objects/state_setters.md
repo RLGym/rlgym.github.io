@@ -39,7 +39,7 @@ class CustomStateSetter(StateSetter):
                 pos = [-1*coord for coord in desired_car_pos]
                 yaw = -1*desired_yaw
 
-            # Now we just use the provided setters in the CarWrapper we are manipulating to set its state. Note that here we are unpacking the pos array to set the position of 
+            # Now we just use the provided setters in the CarWrapper we are manipulating to set its state. Note that here we are unpacking the pos array to set the position of
             # the car. This is merely for convenience, and we will set the x,y,z coordinates directly when we set the state of the ball in a moment.
             car.set_pos(*pos)
             car.set_rot(yaw=yaw)

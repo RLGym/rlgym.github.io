@@ -22,7 +22,7 @@ from rlgym_tools.extra_rewards import AnnealRewards
 from rlgym.utils.reward_functions.common_rewards import VelocityPlayerToBallReward, TouchBallReward
 
 def anneal_rewards_fn():
-    
+
     # These are arbitrary values that may not result in a good model.
     max_steps = 100_000
     reward1 = VelocityPlayerToBallReward()

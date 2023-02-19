@@ -18,7 +18,7 @@ import numpy as np
 
 env = rlgym.make(team_size=1)
 obs = env.reset()
- 
+
 action = env.action_space.sample()
 new_obs, reward, done, game_info = env.step(action)
 
@@ -44,7 +44,7 @@ action1 = env.action_space.sample()
 action2 = env.action_space.sample()
 actions = [action1, action2]
 new_obs, reward, done, game_info = env.step(actions)
- 
+
 print("Reward: {} | Reward Shape: {} | Observation Shape: {}".format(reward, np.shape(reward), np.shape(new_obs)))
 #     'Reward: [0.22909658008217812, -0.000620309618115425] | Reward Shape: (2,) | Observation Shape: (2, 30)'
 

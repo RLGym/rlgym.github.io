@@ -3,8 +3,8 @@
 At their core, RLGym environments are configured with 3 basic objects:
 
 1. A [RewardFunction](https://rlgym.github.io/docs-page.html#reward-functions)
-2. An [ObsBuilder](https://rlgym.github.io/docs-page.html#observation-builders)
-3. A list of [TerminalCondition](https://rlgym.github.io/docs-page.html#terminal-conditions) objects
+1. An [ObsBuilder](https://rlgym.github.io/docs-page.html#observation-builders)
+1. A list of [TerminalCondition](https://rlgym.github.io/docs-page.html#terminal-conditions) objects
 
 RLGym uses these objects at every step.
 

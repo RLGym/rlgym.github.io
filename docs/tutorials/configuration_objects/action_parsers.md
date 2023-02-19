@@ -10,7 +10,7 @@ RLGym expects an array of 8 actions per agent on the pitch. Each action correspo
 * jump
 * boost
 * handbrake
-        
+
 The first five values are expected to be in the range [-1, 1], while the last three values should be either 0 or 1.
 To allow a variety of action inputs while still adhering to requirements of RLGym, we use an `ActionParser`.
 
