@@ -27,3 +27,8 @@ npm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+
+## Writing blog articles
+
+[Adding posts](https://docusaurus.io/docs/blog#adding-posts)

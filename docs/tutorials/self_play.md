@@ -1,6 +1,4 @@
----
-title: Self Play
----
+# Self Play
 
 ## Multiple Agents
 
@@ -23,10 +21,10 @@ obs = env.reset()
  
 action = env.action_space.sample()
 new_obs, reward, done, game_info = env.step(action)
- 
+
 print("Reward: {} | Reward Shape: {} | Observation Shape: {}".format(reward, np.shape(reward), np.shape(new_obs)))
 #     'Reward: 0.22926727739572525 | Reward Shape: () | Observation Shape: (21,)'
- 
+
 env.close()
 ```
 

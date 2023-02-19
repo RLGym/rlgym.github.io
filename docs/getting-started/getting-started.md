@@ -53,10 +53,10 @@ while True:
 
     while not done:
       #Here we sample a random action. If you have an agent, you would get an action from it here.
-      action = env.action_space.sample() 
-      
+      action = env.action_space.sample()
+
       next_obs, reward, done, gameinfo = env.step(action)
-      
+
       obs = next_obs
 ```
 
@@ -79,7 +79,7 @@ model = PPO("MlpPolicy", env=env, verbose=1)
 model.learn(total_timesteps=int(1e6))
 ```
 
-And just like that a Rocket League agent is being trained! 
+And just like that a Rocket League agent is being trained!
 
 The default configuration of RLGym will not produce a competent game-playing agent.
 This configuration is meant as a testing ground for users to quickly verify that they have installed RLGym successfully, and their learning algorithm is working.

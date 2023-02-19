@@ -4,17 +4,17 @@ RLGym expects an array of 8 actions per agent on the pitch. Each action correspo
 
 * throttle
 * steer
-* yaw 
+* yaw
 * pitch
 * roll
 * jump
-* boost 
+* boost
 * handbrake
         
 The first five values are expected to be in the range [-1, 1], while the last three values should be either 0 or 1.
 To allow a variety of action inputs while still adhering to requirements of RLGym, we use an `ActionParser`.
 
-An `ActionParser` has two methods 
+An `ActionParser` has two methods
 
 ```python
 # Called during the initialization of the environment
@@ -26,12 +26,12 @@ def parse_actions(self, actions: Any, state: GameState) -> np.ndarray:
 
 To create a custom action parser, inherit from `ActionParser` abstract class and implement the two above methods.
 Here's an already built action parser that turns a set of continuous actions into discrete actions for faster learning.
+
 ```python
 import numpy as np
 import gym.spaces
 from rlgym.utils.gamestates import GameState
 from rlgym.utils.action_parsers import ActionParser
-
 
 class DiscreteAction(ActionParser):
     """
@@ -56,6 +56,7 @@ class DiscreteAction(ActionParser):
 ```
 
 Now we can simply pass an instance of our concrete `ActionParser` to RLGym when we make an environment.
+
 ```python
 import rlgym
 

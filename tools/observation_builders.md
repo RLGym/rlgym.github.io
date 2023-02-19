@@ -15,7 +15,7 @@ from rlgym.utils.obs_builders import AdvancedObs
 obs_builder = AdvancedObs()
 
 # Stack the observations from AdvancedObs over 5 steps.
-obs_stacker = GeneralStacker(obs_builder, stack_size=5) 
+obs_stacker = GeneralStacker(obs_builder, stack_size=5)
 
 env = rlgym.make(obs_builder=obs_stacker)
 ```

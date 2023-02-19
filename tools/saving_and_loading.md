@@ -9,4 +9,3 @@ However, several common libraries you can use with RLGym have saving and loading
 * [Pytorch](https://pytorch.org/tutorials/beginner/saving_loading_models.html)
 * [Stable-Baselines](https://stable-baselines.readthedocs.io/en/master/guide/save_format.html)
 * [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/guide/save_format.html)
-
