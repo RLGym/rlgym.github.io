@@ -28,7 +28,6 @@ npm build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+## [First Deployment with GITHUB_TOKEN](https://github.com/marketplace/actions/github-pages-action#%EF%B8%8F-first-deployment-with-github_token)
 
-## Writing blog articles
-
-[Adding posts](https://docusaurus.io/docs/blog#adding-posts)
+## [Adding posts](https://docusaurus.io/docs/blog#adding-posts)
