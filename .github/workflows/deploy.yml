@@ -5,9 +5,8 @@ permissions:
 
 on:
   push:
-    branches:
-      - docusaurus
-      - main
+    tags:
+      - '**'
 
 jobs:
   deploy:

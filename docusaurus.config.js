@@ -10,7 +10,7 @@ const katex = require('rehype-katex');
 const config = {
   title: 'The Rocket League Gym',
   tagline: 'A python API to treat the game Rocket League as an OpenAI Gym environment.',
-  url: 'https://captainglac1er.github.io',
+  url: process.env.npm_config_url,
   baseUrl: process.env.npm_config_github ? '/rlgym.github.io/' : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
