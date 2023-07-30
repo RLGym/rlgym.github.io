@@ -4,7 +4,9 @@ Conditional rewards are rewards issued when a condition is met.
 
 ## [Custom Conditional Reward Classes](https://github.com/lucas-emery/rocket-league-gym/blob/7f07bfa980b84eea11627939dd7d7b1689efcfa7/rlgym/utils/reward_functions/common_rewards/conditional_rewards.py#L10)
 
-Conditional rewards require that you provide a reward function, and a condition. If the condition is met, the reward function will be called and reward dealt to the model. Otherwise no reward will be provided.
+Conditional rewards require that you provide a reward function, and a condition.
+If the condition is met, the reward function will be called and reward dealt to the model.
+Otherwise no reward will be provided.
 
 ```python
 class ConditionalRewardFunction(RewardFunction):
