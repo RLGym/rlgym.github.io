@@ -11,9 +11,9 @@ LiuDistanceBallToGoalReward(own_goal=False):
 ```
 
 ```python
-from rlgym.utils.reward_functions.common_rewards import LiuDistancePlayerToBallReward
+from rlgym.utils.reward_functions.common_rewards import LiuDistanceBallToGoalReward
 
-liu_distance = LiuDistancePlayerToBallReward()
+liu_distance = LiuDistanceBallToGoalReward()
 ```
 
 1. Determine which team the agent is on, and set the opponent's goal as the objective.
