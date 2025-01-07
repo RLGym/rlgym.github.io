@@ -100,7 +100,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/RLGym/rlgym.github.io/',
+            href: 'https://captainglac1er.github.io/rocket-league-gym/',
             label: 'API Reference',
             position: 'left',
           },
