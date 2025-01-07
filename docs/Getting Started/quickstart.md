@@ -105,4 +105,4 @@ if __name__ == "__main__":
 
 This code will train a 2v2 bot for 1 billion timesteps (That's over 18,500 hours of in-game time!), saving checkpoints every 1 million timesteps. You can stop the training process at any time by pressing P while the program is in focus.
 
-For a more complete guide for training your first agent, refer to our Rocket League tutorial on [training an agent](../Rocket%20League/training_an_agent).
+For a more complete guide to training your first agent, refer to our Rocket League tutorial on [training an agent](../Rocket%20League/training_an_agent).
