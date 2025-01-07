@@ -6,6 +6,10 @@
 # Production
 /build
 
+# Misc debug stuff.
+/RLGym-PPO-Guide-main
+/rocket-league-gym-2
+
 # Generated files
 .docusaurus
 .cache-loader
