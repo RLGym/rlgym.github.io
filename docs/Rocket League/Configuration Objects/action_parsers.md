@@ -4,13 +4,11 @@ title: Action Parsers
 
 # Action Parsers
 
-Action parsers define an interface that translates outputs from a policy into inputs that will be provided to the
-`TransitionEngine` before computing the next game state. RocketSim and Rocket League both 
-expect an array of 8 values per agent on the pitch where each element corresponds to one controller input. For a list of valid inputs, refer to the car controls table in our [Game Values](../../Cheatsheets/game_values) cheatsheet.
+Action parsers are how your agent's decisions get turned into actual game inputs. They take whatever your policy outputs and convert it into the 8 controller inputs that RocketSim and Rocket League understand (things like throttle, steering, etc.). Check out our [Game Values](../../Cheatsheets/game_values) cheatsheet to see what these inputs are.
 
+## How They Work
 
-
-Every `ActionParser` has three methods:
+Every `ActionParser` needs three methods:
 
 ```python
 # Called during the initialization of the environment, this is used to inform the learning algorithm how many outputs
@@ -24,10 +22,9 @@ def reset(self, initial_state: StateType, shared_info: Dict[str, Any]) -> None:
 def parse_actions(self, actions: Dict[AgentID, ActionType], state: StateType, shared_info: Dict[str, Any]) -> Dict[AgentID, EngineActionType]:
 ```
 
-To create a custom action parser, inherit from `ActionParser` abstract class and implement the two above methods.
-As an example let's look at a pre-built action parser that receives a set of 8 continuous values on the interval `[-1, 1]`
-and applies a threshold to the last 3 values such that they will become either `0` or `1` to comply with the valid car 
-controls listed in the table above.
+## Creating Your Own
+
+To create a custom action parser, inherit from `ActionParser` class and implement those methods. Here's an example that takes 8 continuous values between -1 and 1, and converts the last 3 into binary (0 or 1) inputs to match what the game expects:
 
 ```python
 from typing import Dict, Any

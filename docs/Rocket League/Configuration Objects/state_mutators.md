@@ -4,13 +4,13 @@ title: State Mutators
 
 # State Mutators
 
-Before anything happens in the environment, there must be an initial state. RLGym v2 provides a way for users to construct and modify this state via `StateMutator` objects. If more than one `StateMutator` is provided, they can be combined using `MutatorSequence`, which will apply them in sequence, each modifying the current contents of the state.
+Before anything happens in the environment, there must be an initial state. RLGym v2 provides a way for users to construct and modify this state via `StateMutator` objects. Multiple `StateMutator` objects can be combined using `MutatorSequence`, which applies them sequentially to modify the current state.
 
-Every time `TransitionEngine.create_base_state()` is called, the list of provided `StateMutator` objects will be called again to construct a new state. The state returned by the final `StateMutator` in the sequence will become the current state of the `TransitionEngine`.
+The sequence of `StateMutator` objects is invoked each time `TransitionEngine.create_base_state()` is called. The state returned by the final `StateMutator` in the sequence becomes the current state of the `TransitionEngine`.
 
 ## Creating a Custom State Mutator
 
-To create a custom state mutator, we need to inherit from the `StateMutator` class and implement its `apply` method. Here's an example where we'll create a mutator that spawns cars in specific positions and sets the ball state:
+To implement a custom state mutator, inherit from the `StateMutator` class and implement its `apply` method. The following example demonstrates a mutator that sets specific positions for cars and the ball:
 
 ```python
 from typing import Dict, Any
@@ -23,11 +23,11 @@ class CustomStateMutator(StateMutator[GameState]):
     """A StateMutator that sets custom positions for cars and the ball."""
     
     def apply(self, state: GameState, shared_info: Dict[str, Any]) -> None:
-        # Set up our desired spawn location and orientation
+        # Define spawn location and orientation
         desired_car_pos = np.array([100, 100, 17], dtype=np.float32)  # x, y, z
         desired_yaw = np.pi/2
 
-        # Loop over every car in the game
+        # Iterate over all cars in the game
         for car in state.cars.values():
             if car.is_orange:
                 # Orange team positions
@@ -38,12 +38,12 @@ class CustomStateMutator(StateMutator[GameState]):
                 pos = -desired_car_pos
                 yaw = -desired_yaw
 
-            # Set the car's physics state
+            # Set car physics state
             car.physics.position = pos
             car.physics.euler_angles = np.array([0, 0, yaw], dtype=np.float32)
-            car.boost = 33  # Set boost to 33
+            car.boost = 33
 
-        # Set the ball state
+        # Set ball physics state
         state.ball.position = np.array([0, 0, common_values.CEILING_Z/2], dtype=np.float32)
         state.ball.linear_velocity = np.zeros(3, dtype=np.float32)
         state.ball.angular_velocity = np.zeros(3, dtype=np.float32)

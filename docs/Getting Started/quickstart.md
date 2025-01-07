@@ -5,30 +5,30 @@ sidebar_position: 3
 
 # Quick Start Guide
 
-In this guide we'll install RLGym with RocketSim and train a simple Rocket League bot with an algorithm from RLGym Learn. To train a bot, we will first set up an environment where it can play, then create a learner and start training. In this guide we'll use all the default settings, but you can experiment with different values to see how they affect your bot's performance. 
+Let's get you started with RLGym by installing it with RocketSim and training a basic Rocket League agent using RLGym-PPO. We'll set up a training environment, configure a learner, and get training. We'll use default settings here, but you can adjust these later to tune how your agent learns.
 
 ## Installation
 
-Let's start by installing RLGym with RocketSim support. RocketSim is a headless simulator for Rocket League, which means your bot can train much faster than in the real game. We'll also install RLGym-PPO, which provides an implementation of PPO compatible with RLGym.
+First, let's get RLGym with RocketSim support and install RLGym-PPO:
 
 ```bash
 pip install rlgym[rl-sim]
 pip install git+https://github.com/AechPro/rlgym-ppo
 ```
 
-If you have an NVIDIA GPU, you'll also want to install PyTorch with CUDA support from [pytorch.org](https://pytorch.org).
+If you have an NVIDIA GPU, grab PyTorch with CUDA support from [pytorch.org](https://pytorch.org) to speed up training.
 
 ## Training Your First Agent
 
-Next, we'll create a Rocket League environment where our bot can train. We'll set up a 2v2 match with the typical kickoff positions, let the agent see all the relevant information from the game, and reward it for scoring goals and touching the ball. While the game will end as usual after a 5 minute timer, we're also going to add a timeout condition to end the episode if the agent doesn't touch the ball for 30 seconds. We do this because we don't want the bot to waste a bunch of time flopping around without touching the ball.
+Now we'll set up a 2v2 rocket league environment with standard kickoff positions. The environment will tell the agent what's happening in the game and reward it for scoring goals and touching the ball. While normal matches last 5 minutes, we'll add a 30-second timeout if the agent doesn't touch the ball - this helps avoid wasting time on unproductive training episodes.
 
-The following code will set up our simple 2v2 environment and start training our bot with the Proximal Policy Optimization (PPO) algorithm implemented in RLGym Learn.
+The code below configures the 2v2 environment and initializes training using Proximal Policy Optimization (PPO):
 
 ```python
 def build_rlgym_v2_env():
     from rlgym.api import RLGym
     from rlgym.rocket_league.action_parsers import LookupTableAction, RepeatAction
-    from rlgym.rocket_league.done_conditions import GoalCondition, NoTouchTimeoutCondition, TimeoutCondition
+    from rlgym.rocket_league.done_conditions import GoalCondition, NoTouchTimeoutCondition, TimeoutCondition, AnyCondition
     from rlgym.rocket_league.obs_builders import DefaultObs
     from rlgym.rocket_league.reward_functions import CombinedReward, GoalReward, TouchReward
     from rlgym.rocket_league.sim import RocketSimEngine
@@ -102,7 +102,5 @@ if __name__ == "__main__":
                       log_to_wandb=True)
     learner.learn()
 ```
-
-This code will train a 2v2 bot for 1 billion timesteps (That's over 18,500 hours of in-game time!), saving checkpoints every 1 million timesteps. You can stop the training process at any time by pressing P while the program is in focus.
 
 For a more complete guide to training your first agent, refer to our Rocket League tutorial on [training an agent](../Rocket%20League/training_an_agent).

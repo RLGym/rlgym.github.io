@@ -5,11 +5,11 @@ sidebar_position: 2
 
 # Creating an Environment
 
-This tutorial will show you how to create a simple grid world environment using the RLGym API. Every RLGym environment must implement the configuration objects specified in our [RLGym overview](/Getting%20Started/overview). Let's take a look at the following example to see how each of the configuration objects can be implemented and used.
+This tutorial demonstrates how to implement a grid world environment using the RLGym API. Each RLGym environment requires implementing the configuration objects described in the [RLGym overview](/Getting%20Started/overview). The following example illustrates an implementation of each required component.
 
 ## Grid World Example
 
-We'll start with the transition engine, which defines the states environment dynamics.
+We begin by defining the state of our environment, and a transition engine that handles the environment dynamics.
 
 ```python
 from typing import Dict, List, Tuple, Optional
@@ -89,7 +89,8 @@ class GridWorldEngine(TransitionEngine[int, GridWorldState, int]):
         self._state = initial_state if initial_state is not None else self.create_base_state()
 ```
 
-Now that the hard part is out of the way, we can implement the other configuration objects that will shape what agents see, the actions they can take, and how they should be rewarded.
+Now we implement the remaining configuration objects for our environment.
+
 ```python
 # We need to define a state mutator, which is responsible for modifying the environment state.
 class GridWorldMutator(StateMutator[GridWorldState]):
@@ -197,7 +198,7 @@ class GridWorldTruncatedCondition(DoneCondition[int, GridWorldState]):
         return state.steps >= self.max_steps
 
 ```
-And that's it for our configuration objects! To use our new gridworld environment, we just pass the configuration objects to the RLGym constructor.
+With all configuration objects implemented, we can construct the environment by passing an instance of each object to the RLGym constructor.
 
 ```python
 # Build the environment
@@ -225,4 +226,4 @@ for _ in range(1000):
         print(f"Episode reward: {ep_rew}")
         ep_rew = 0
 ```
-Now we are ready to plug this into a learning algorithm and train a gridworld agent!
+The environment is now ready for integration with a learning algorithm to train a grid world agent.

@@ -5,17 +5,17 @@ sidebar_position: 2
 
 # Game Values
 
-All lengths are measured in Unreal Units (uu), equivalent to 1 centimeter.
+This document provides a reference for constant values used in Rocket League. All spatial measurements are in Unreal Units (uu), where 1 uu = 1 centimeter.
 
 ## Field Dimensions
 | Name | Type | Range | Description |
 |------|------|-------|-------------|
-| `SIDE_WALL_X` | float | ±4096 | Distance from center to side wall |
-| `BACK_WALL_Y` | float | ±5120 | Distance from center to back wall |
-| `CEILING_Z` | float | 2044 | Height of the ceiling |
-| `BACK_NET_Y` | float | ±6000 | Distance from center to back of net |
+| `SIDE_WALL_X` | float | ±4096 | Distance from field center to side wall |
+| `BACK_WALL_Y` | float | ±5120 | Distance from field center to back wall |
+| `CEILING_Z` | float | 2044 | Height of arena ceiling from ground |
+| `BACK_NET_Y` | float | ±6000 | Distance from field center to back of net |
 | `CORNER_CATHETUS_LENGTH` | float | 1152 | Length of corner wall section |
-| `RAMP_HEIGHT` | float | 256 | Height of corner ramp |
+| `RAMP_HEIGHT` | float | 256 | Height of corner ramp from ground |
 
 ## Goal Dimensions
 | Name | Type | Range | Description |
@@ -26,11 +26,11 @@ All lengths are measured in Unreal Units (uu), equivalent to 1 centimeter.
 ## Time Values
 | Name | Type | Range | Description |
 |------|------|-------|-------------|
-| `TICKS_PER_SECOND` | int | 120 | Physics updates per second |
-| `SMALL_PAD_RECHARGE` | float | 4.0 | Small boost pad respawn time |
-| `BIG_PAD_RECHARGE` | float | 10.0 | Large boost pad respawn time |
-| `DEMO_RESPAWN_SECONDS` | float | 3.0 | Time to respawn after demo |
-| `BOOST_CONSUMPTION_RATE` | float | 33.3 | Boost used per second |
+| `TICKS_PER_SECOND` | int | 120 | Physics simulation rate |
+| `SMALL_PAD_RECHARGE` | float | 4.0 | Small boost pad respawn time (seconds) |
+| `BIG_PAD_RECHARGE` | float | 10.0 | Large boost pad respawn time (seconds) |
+| `DEMO_RESPAWN_SECONDS` | float | 3.0 | Car respawn time after demolition |
+| `BOOST_CONSUMPTION_RATE` | float | 33.3 | Boost consumption per second |
 
 ## Physics Values
 | Name | Type | Range | Description |
@@ -44,10 +44,10 @@ All lengths are measured in Unreal Units (uu), equivalent to 1 centimeter.
 ## Speed Limits
 | Name | Type | Range | Description |
 |------|------|-------|-------------|
-| `BALL_MAX_SPEED` | float | 6000 | Maximum ball speed |
-| `CAR_MAX_SPEED` | float | 2300 | Maximum car speed |
-| `SUPERSONIC_THRESHOLD` | float | 2200 | Speed for supersonic trail |
-| `CAR_MAX_ANG_VEL` | float | 5.5 | Max angular velocity (rad/s) |
+| `BALL_MAX_SPEED` | float | 6000 | Maximum attainable ball velocity |
+| `CAR_MAX_SPEED` | float | 2300 | Maximum attainable car velocity |
+| `SUPERSONIC_THRESHOLD` | float | 2200 | Velocity threshold for supersonic state |
+| `CAR_MAX_ANG_VEL` | float | 5.5 | Maximum car angular velocity (radians/s) |
 
 ## Teams
 | Name | Type | Range | Description |

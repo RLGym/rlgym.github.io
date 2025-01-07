@@ -5,15 +5,21 @@ sidebar_position: 1
 
 # Training an Agent
 
-This guide will walk you through training a Rocket League bot using RLGym and the PPOLearner from RLGym Learn. We'll use RocketSim to avoid running the actual game, and cover the essential concepts you need to understand. We'll be jumping off from the end of our [Quick Start Guide](../Getting%20Started/quickstart), so make sure you've read that first.
+This guide builds on our [Quick Start Guide](../Getting%20Started/quickstart) to help you train a more sophisticated Rocket League bot than the simple setup in the quickstart guide. We'll use RocketSim to run training much faster than the actual game, and cover all the key concepts you need to know.
 
+his tutorial is adapted from an excellent guide written by Zealan, the creator of RocketSim. You can find the [original tutorial here](https://github.com/ZealanL/RLGym-PPO-Guide/tree/main) for even more details.
 
 ## A Better Agent
 
-This tutorial is taken from the wonderful tutorial written by Zealan, the creator of RocketSim, and adapted for RLGym v2. Please check out the [original tutorial](https://github.com/ZealanL/RLGym-PPO-Guide/tree/main) for more details.
+We'll start off this by first creating a richer reward function so our agent has an easier time learning what to do. Then we'll adjust the PPO hyperparameters, and finally set up a visualizer so we can watch our agent learn.
 
-Now that we've covered the basics, lets dive into a more complicated agent training setup. First, we'll create a better environment where the agent receives a richer reward signal. Next, we'll set all of the hyperparameters in the learner to some reasonable values instead of the defaults. Finally, we'll configure the environment to use a visualizer so we can watch the agent learn as it plays.
+First you'll need to make sure you have RLGym installed with RLViser support (unless you are using a different visualizer, in which case you can skip this step):
 
+```bash
+pip install rlgym[rl-rlviser]
+```
+
+Now let's make a few custom reward functions to help our agent out. It's best to move these to a separate file from the main script and then import them when making the environment, but you can put them wherever you like.
 ```python
 from typing import List, Dict, Any
 from rlgym.api import RewardFunction
@@ -80,8 +86,13 @@ class VelocityBallToGoalReward(RewardFunction[AgentID, GameState, float]):
             vel_toward_goal = np.dot(ball_vel, dir_to_goal)
             rewards[agent] = max(vel_toward_goal / common_values.BALL_MAX_SPEED, 0)
         return rewards
+```
 
+Now that we've got our rewards, we can set up the environment:
+
+```python
 def build_rlgym_v2_env():
+    import numpy as np
     from rlgym.api import RLGym
     from rlgym.rocket_league.action_parsers import LookupTableAction, RepeatAction
     from rlgym.rocket_league.done_conditions import GoalCondition, NoTouchTimeoutCondition, TimeoutCondition, AnyCondition
@@ -153,37 +164,38 @@ if __name__ == "__main__":
     learner = Learner(build_rlgym_v2_env,
                       n_proc=n_proc,
                       min_inference_size=min_inference_size,
-                      metrics_logger=None,
+                      metrics_logger=None, # Leave this empty for now.
                       ppo_batch_size=100_000,  # batch size - much higher than 300K doesn't seem to help most people
                       policy_layer_sizes=[2048, 2048, 1024, 1024],  # policy network
                       critic_layer_sizes=[2048, 2048, 1024, 1024],  # critic network
                       ts_per_iteration=100_000,  # timesteps per training iteration - set this equal to the batch size
                       exp_buffer_size=300_000,  # size of experience buffer - keep this 2 - 3x the batch size
-                      ppo_minibatch_size=100_000,  # minibatch size - set this as high as your GPU can handle
+                      ppo_minibatch_size=50_000,  # minibatch size - set this as high as your GPU can handle
                       ppo_ent_coef=0.01,  # entropy coefficient - this determines the impact of exploration
                       policy_lr=1e-4,  # policy learning rate
                       critic_lr=1e-4,  # critic learning rate
                       ppo_epochs=2,   # number of PPO epochs
-                      standardize_returns=True,
-                      standardize_obs=False,
+                      standardize_returns=True, # Don't touch these.
+                      standardize_obs=False, # Don't touch these.
                       save_every_ts=1_000_000,  # save every 1M steps
                       timestep_limit=1_000_000_000,  # Train for 1B steps
-                      log_to_wandb=True)
+                      log_to_wandb=False # Set this to True if you want to use Weights & Biases for logging.
+                      ) 
     learner.learn()
 ```
-
 ## Understanding the Training Process
 
-With PPO, training happens in cycles. First, the agent collects experience in the game and then PPO uses that experience to improve the agent. During this phase the bot plays games in RocketSim, trying different actions to gather experience. Each time the bot takes an action the game advances 8 physics ticks, and the environment returns a reward and observation. We call this a *timestep*. After collecting a certain number of timesteps PPO uses all the collected experience to improve the agent's neural network, making it more likely to repeat actions that led to high rewards and less likely to repeat actions that led to low rewards. We call one of these training cycles an *iteration*.
+Let's break down how PPO training works. The process happens in cycles:
 
-After each iteration, you will see some information displayed in the console about what happened since the last iteration. These metrics include important information about the training process, such as:
-- **Policy Reward**: Average reward per episode (higher is better)
-- **Policy Entropy**: How much the policy is exploring (this should settle around a positive number like 2)
-- **Collected Steps Per Second**: How many timesteps are being collected per second (higher is better)
-- **Consumed Steps Per Second**: How many timesteps are being consumed per second (higher is better)
-- **Value Loss**: How well the bot predicts future rewards (lower is better)
-- **Total Steps**: How many timesteps the bot has collected
+1. **Collecting Experience**: Your agent plays games in RocketSim, trying different actions to learn what works. Each time it acts, the game advances 8 physics ticks (that's one timestep), and the environment tells the agent what happened (by showing it a new observation) and how well it did (by giving it a reward).
 
+2. **Learning**: After collecting enough timesteps, PPO uses all that experience to improve your agent's neural network. It adjusts the network to make good actions (ones that led to high rewards) more likely and bad actions less likely.
+
+When you run the training, you'll see a bunch of metrics like these in the console after each cycle:
+- **Policy Reward**: The average reward per episode - higher means your agent is doing better
+- **Policy Entropy**: How much your agent is exploring - this should settle around 2
+- **Collected Steps Per Second**: How fast your agent is gathering experience - higher is better
+- **Consumed Steps Per Second**: How fast your agent is learning from that experience - higher is better
 
 ## Monitoring Progress
-RLGym-PPO has integrated support for [Weights & Biases](https://wandb.ai) (wandb) for tracking training metrics. Once you set up an account with wandb, set the `log_to_wandb` parameter to `True` in the `Learner` constructor. Then you can view your training progress in the web interface. You'll see graphs of rewards, losses, and other statistics that help you understand how your bot is improving.
+RLGym-PPO has integrated support for [Weights & Biases](https://wandb.ai) (wandb) for tracking training metrics. Once you set up an account with wandb and install the Python package via `pip install wandb`, set the `log_to_wandb` parameter to `True` in the `Learner` constructor. Then you can view your training progress in the web interface. You'll see graphs of rewards, losses, and other statistics that help you understand how your bot is improving.

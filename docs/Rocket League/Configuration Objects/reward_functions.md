@@ -13,11 +13,12 @@ All reward functions must implement the following methods:
 def reset(self, agents: List[AgentID], initial_state: StateType, shared_info: Dict[str, Any]) -> None:
 
 # Called every time `TransitionEngine.step()` is called.
-# def get_rewards(self, agents: List[AgentID], state: StateType, is_terminated: Dict[AgentID, bool], 
-                is_truncated: Dict[AgentID, bool], shared_info: Dict[str, Any]) -> Dict[AgentID, RewardType]:
+def get_rewards(self, agents: List[AgentID], state: StateType, is_terminated: Dict[AgentID, bool], 
+               is_truncated: Dict[AgentID, bool], shared_info: Dict[str, Any]) -> Dict[AgentID, RewardType]:
 ```
 
-As an example, let's create a simple reward function that will reward our agents for gaining speed.
+## Example
+Here's a simple reward function that encourages agents to drive faster - the faster they go, the more reward they get:
 
 ```python
 from typing import List, Dict, Any, Union, Tuple
@@ -38,10 +39,10 @@ class SpeedReward(RewardFunction):
     for agent in agents:
         car = state.cars[agent]
         linear_velocity = car.physics.linear_velocity
-        reward = np.linalg.norm(linear_velocity)
+        reward = np.linalg.norm(linear_velocity)  # Reward is the car's speed
         rewards[agent] = reward
         
     return rewards
 ```
 
-Now we can simply pass an instance of our `SpeedReward` to an RLGym environment and we're off to the races!
+That's it! Just pass this reward function to your environment and watch your agents learn to zoom around the field.

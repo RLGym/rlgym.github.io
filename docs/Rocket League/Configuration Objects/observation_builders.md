@@ -7,11 +7,10 @@ title: Observation Builders
 An `ObsBuilder` is an object used by RLGym to transform a `GameState` from the transition engine into inputs for each 
 agent at every step. An observation builder is expected to build one observation per agent in the environment.
 
-Observation builders need to implement three methods:
+To make your own observation builder, you'll need three methods:
 
 ```python
-
-# Called by a learning algorithm.
+# This tells your learning algorithm what kind of observations to expect
 def get_obs_space(self, agent: AgentID) -> ObsSpaceType:
     
 # Called every time `TransitionEngine.create_base_state()` is called.
@@ -21,10 +20,9 @@ def reset(self, initial_state: StateType, shared_info: Dict[str, Any]) -> None:
 def build_obs(self, agents: List[AgentID], state: StateType, shared_info: Dict[str, Any]) -> Dict[AgentID, ObsType]:
 ```
 
-To implement a custom `ObsBuilder` all we have to do is inherit from the parent class and implement the above methods.
+## Example
 
-Let's look at an example observation builder that will allow each agent to observe its own physics state and the physics 
-state of the ball.
+Let's create a simple observation builder that lets each agent see its own physics state (position, velocity, etc.) and the ball's physics state. Here's how we do it:
 
 ```python
 from rlgym.api import ObsBuilder, AgentID
@@ -35,7 +33,7 @@ import numpy as np
 
 class CustomObsBuilder(ObsBuilder):
     def get_obs_space(self, agent: AgentID) -> Tuple[str, int]:
-        # An observation for any agent will contain 24 real numbers.
+        # Each observation will have 24 numbers (physics data for car and ball)
         return 'real', 24
     
     def reset(self, agents: List[AgentID], initial_state: GameState, shared_info: Dict[str, Any]) -> None:
@@ -44,9 +42,8 @@ class CustomObsBuilder(ObsBuilder):
     def build_obs(self, agents: List[AgentID], state: GameState, shared_info: Dict[str, Any]) -> Dict[AgentID, np.ndarray]:
         obs = {}
         
-        # Loop over all the agents
+        # Build an observation for each agent
         for agent in agents:
-            # Create an observation for this agent.
             obs[agent] = self._build_obs(agent, state, shared_info)
         
         return obs
@@ -96,7 +93,7 @@ import numpy as np
 
 class CustomObsBuilder(ObsBuilder):
     def get_obs_space(self, agent: AgentID) -> Tuple[str, int]:
-        # An observation for any agent will contain 24 real numbers.
+        # Each observation will have 24 numbers (physics data for car and ball)
         return 'real', 24
     
     def reset(self, agents: List[AgentID], initial_state: GameState, shared_info: Dict[str, Any]) -> None:
@@ -105,9 +102,8 @@ class CustomObsBuilder(ObsBuilder):
     def build_obs(self, agents: List[AgentID], state: GameState, shared_info: Dict[str, Any]) -> Dict[AgentID, np.ndarray]:
         obs = {}
         
-        # Loop over all the agents
+        # Build an observation for each agent
         for agent in agents:
-            # Create an observation for this agent.
             obs[agent] = self._build_obs(agent, state, shared_info)
         
         return obs
@@ -146,4 +142,4 @@ class CustomObsBuilder(ObsBuilder):
 Now our agents will always think they're playing on the orange side of the pitch!
 
 While these `ObsBuilder` examples won't crash if provided to an RLGym environment, they lack a lot of information that
-an effective game-playing agent would need to learn. If you're looking for a more complete example, check out the [default observation builder](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/rocket_league/obs_builders/default_obs.py) provided by RLGym!
+an effective game-playing agent would need to know about. If you're looking for a more complete example, check out the [default observation builder](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/rocket_league/obs_builders/default_obs.py) provided by RLGym!

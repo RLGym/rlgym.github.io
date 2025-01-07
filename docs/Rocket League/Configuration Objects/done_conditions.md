@@ -21,7 +21,7 @@ def is_done(self, agents: List[AgentID], state: GameState, shared_info: Dict[str
 
 ## Examples
 
-Here's a done condition that ends the episode when a goal is scored. We would use this as a terminal condition:
+Here's a simple done condition that ends the episode when an agent scores a goal. This is a natural end to the episode, so we use it as a terminal condition:
 
 ```python
 from typing import List, Dict, Any
@@ -39,7 +39,7 @@ class GoalCondition(DoneCondition[AgentID, GameState]):
         return {agent: state.goal_scored for agent in agents}
 ```
 
-Sometimes we would rather cut an episode early. For example, if we want to prevent the episode from going on for too long while nothing is happening, we could use a done condition that checks if the ball hasn't been touched for a certain amount of time. We would use this as a truncation condition:
+Sometimes we want to end episodes early to keep training efficient. For example, if the ball hasn't been touched in a while, we might want to start fresh from a kickoff. Here's a done condition that does that (we use this as a truncation condition):
 
 ```python
 from typing import List, Dict, Any
@@ -75,7 +75,7 @@ class NoTouchTimeoutCondition(DoneCondition[AgentID, GameState]):
 
 ## Combining Conditions
 
-If you want to combine more than one done condition, into a single object, you can use the `AnyCondition` or `AllCondition` classes. As their names imply, they will return `True` if any or all of the provided conditions are satisfied, respectively. While in practice we wouldn't want to combine our example conditions into one, this code snippet shows how to do it:
+If you want to combine more than one done condition into a single object, you can use the `AnyCondition` or `AllCondition` classes. As their names imply, they will return `True` if any or all of the provided conditions are satisfied, respectively. While in practice we wouldn't want to combine our example conditions into one, this code snippet shows how to do it:
 
 ```python
 from rlgym.rocket_league.done_conditions import AnyCondition, AllCondition, GoalCondition, NoTouchTimeoutCondition

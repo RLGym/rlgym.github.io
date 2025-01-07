@@ -1,8 +1,11 @@
 import React from 'react';
 import {
     faBook,
+    faBrain,
+    faChalkboard,
     faLaptopCode,
     faLightbulb,
+    faChalkboardTeacher,
     faMapSigns,
     faRocket, faTools,
     IconDefinition
@@ -70,7 +73,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'RLGym Learn',
-    Svg: faTools,
+    Svg: faChalkboardTeacher,
     description: (
       <>
         A generic learning framework for RLGym.

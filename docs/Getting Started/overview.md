@@ -5,21 +5,20 @@ sidebar_position: 2
 
 # Overview of RLGym
 
-RLGym is designed to make creating and modifying reinforcement learning environments as simple as possible. The RLGym API breaks down an environment into several components, which we refer to as "configuration objects". All a user needs to do to create their own environment is write a concrete implementation of the configuration objects they want to use, and RLGym will handle the rest. Our goal is to provide a clear path from asking the question "Is it possible to use reinforcement learning with this game?" to actually training an agent.
+RLGym breaks down a reinforcement learning environment into a set of components, which we call "configuration objects." Every environment is defined by a set of these objects, and the RLGym API handles the flow of information between them to present a consistent interface for an agent to interact with. To create a new environment, users just need to implement each of the configuration objects described below and pass them to the `RLGym` constructor.
 
 ## Configuration Objects
 
-Every RLGym environment is built from the following components, which we refer to as "configuration objects":
-- A `TransitionEngine`: Manages state transitions and core environment logic
-- A `StateMutator`: Controls how environment state is modified (e.g., on reset)
-- An `ObsBuilder`: Converts environment state into agent observations
-- An `ActionParser`: Defines and validates agent actions
-- A `RewardFunction`: Calculates rewards for agent actions
-- One or more `DoneConditions`: Determine when episodes end (termination) or are cut short (truncation)
-- Optionally a `Renderer`: Visualizes the environment state
+There are a total of 6 required configuration objects, and an optional renderer. They are:
+- A `TransitionEngine`: Handles how the environment changes from one state to another
+- A `StateMutator`: Controls how the environment gets reset or modified
+- An `ObsBuilder`: Turns the environment state into agent observations
+- An `ActionParser`: Defines what actions agents can take
+- A `RewardFunction`: Determines what rewards agents receive
+- One or more `DoneConditions`: Decide when episodes should be terminated (natural end) or truncated (early stop)
+- Optionally a `Renderer`: Shows you what's happening in the environment
 
-The diagram below depicts how RLGym configuration objects come together to define an environment and interface with
-a learning agent.
+The diagram below shows the interaction between these components:
 
 ```mermaid
 %%{

@@ -36,8 +36,7 @@ class BallPositionRenderer(Renderer[GameState]):
         pass
 ```
 
-
-## Using Renderers
+## Using Your Renderer
 
 To use a renderer with your environment, just pass an instance of your renderer to the `RLGym` constructor:
 ```python
@@ -57,7 +56,8 @@ while True:
     if terminated or truncated:
         break
 ```
-and make sure to call `env.close()` when you're done:
+and don't forget to call `env.close()` when you're done:
+
 ```python
 env.close()
 ```
