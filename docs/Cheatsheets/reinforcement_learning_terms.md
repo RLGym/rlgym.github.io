@@ -82,8 +82,8 @@ To understand how GAE works, we first need to understand an interesting fact abo
 $$
 \begin{aligned}
 V(s_t) &= \mathbb{E}_{\pi}[G_t | s_t] \\
-       &= \mathbb{E}_{\pi}[R(s_t, a_t) + \gamma G_{t+1} | s_t] \\
-       &= \mathbb{E}_{\pi}[R(s_t, a_t)] + \gamma V(s_{t+1}).
+       &= \mathbb{E}_{\pi}[R(s_t, a) + \gamma G_{t+1} | s_t] \\
+       &= \mathbb{E}_{\pi}[R(s_t, a)] + \gamma V(s_{t+1}).
 \end{aligned}
 $$
 Which, so long as the reward function is deterministic, is equivalent to
@@ -101,7 +101,7 @@ V(s_t) &= r_t + \gamma V(s_{t+1}) \\
 $$
 These equalities are important because they show us that there are as many ways to write $V(s_t)$ as there are timesteps in a trajectory. We care about that because, in practice, we don't know the actual value of $V(s_t)$ for any state. Instead, we collect one trajectory at a time, and consider the return we calculate from each timestep as a *sample* from the return distribution at that state. We then train our critic $v(s)$ to predict the return we calculate for each state. This works because when we encounter the same state more than once we'll get a different return for it, so the critic will learn to predict the average return at that state. If we do this enough times, the critic will learn to predict the true value function.
 
-However, when training the critic, one might look at the above equivalent ways of writing $V(s_t)$ and wonder, "which of these equations should I train the critic to predict?" To answer that question we will first rewrite the above equations by denoting each form of $V(s_t)$ as $V^{n}_t$, and we will introduce our critic to the calculation by replacing $V(s)$ with$v(s)$:
+However, when training the critic, one might look at the above equivalent ways of writing $V(s_t)$ and wonder, "which of these equations should I train the critic to predict?" To answer that question we will first rewrite the above equations by denoting each form of $V(s_t)$ as $V^{n}_t$, and we will introduce our critic to the calculation by replacing $V(s)$ with $v(s)$:
 $$
 \begin{aligned}
 V^{(1)}_t &= r_t + \gamma v(s_{t+1}) \\
