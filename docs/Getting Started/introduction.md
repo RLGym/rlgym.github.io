@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ## What is RLGym?
 
-RLGym is a Python API for creating reinforcement learning environments. While it was originally designed for the game [Rocket League](https://www.rocketleague.com), the core API is now game-agnostic. This means you can use RLGym to create environments from simple grid worlds to complex physics simulations. Check out the [overview](/Getting%20Started/overview) section for a detailed overview of the RLGym API.
+RLGym is a Python API for creating reinforcement learning environments. While it was originally designed for the game [Rocket League](https://www.rocketleague.com), the core API is now game-agnostic. This means you can use the RLGym API to create a broad range of environments, from simple grid worlds to complex physics simulations. Check out the [overview](/Getting%20Started/overview) section for a detailed overview of the new API.
 
 ## Getting Started
 
