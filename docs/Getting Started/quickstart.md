@@ -38,11 +38,11 @@ def build_rlgym_v2_env():
     import numpy as np
 
     spawn_opponents = True
-    team_size = 1
+    team_size = 2
     blue_team_size = team_size
     orange_team_size = team_size if spawn_opponents else 0
     action_repeat = 8
-    no_touch_timeout_seconds = 10
+    no_touch_timeout_seconds = 30
     game_timeout_seconds = 300
 
     action_parser = RepeatAction(LookupTableAction(), repeats=action_repeat)

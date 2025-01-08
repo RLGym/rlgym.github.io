@@ -7,11 +7,11 @@ sidebar_position: 1
 
 This guide builds on our [Quick Start Guide](../Getting%20Started/quickstart) to help you train a more sophisticated Rocket League bot than the simple setup in the quickstart guide. We'll use RocketSim to run training much faster than the actual game, and cover all the key concepts you need to know.
 
-his tutorial is adapted from an excellent guide written by Zealan, the creator of RocketSim. You can find the [original tutorial here](https://github.com/ZealanL/RLGym-PPO-Guide/tree/main) for even more details.
+This tutorial is adapted from an excellent guide written by Zealan, the creator of RocketSim. You can find the [original tutorial here](https://github.com/ZealanL/RLGym-PPO-Guide/tree/main) for even more details.
 
 ## A Better Agent
 
-We'll start off this by first creating a richer reward function so our agent has an easier time learning what to do. Then we'll adjust the PPO hyperparameters, and finally set up a visualizer so we can watch our agent learn.
+We'll start this off by first creating a richer reward function so our agent has an easier time learning what to do. We'll then adjust the PPO hyperparameters, and finally set up a visualizer so we can watch our agent learn.
 
 First you'll need to make sure you have RLGym installed with RLViser support (unless you are using a different visualizer, in which case you can skip this step):
 
@@ -22,8 +22,8 @@ pip install rlgym[rl-rlviser]
 Now let's make a few custom reward functions to help our agent out. It's best to move these to a separate file from the main script and then import them when making the environment, but you can put them wherever you like.
 ```python
 from typing import List, Dict, Any
-from rlgym.api import RewardFunction
-from rlgym.rocket_league.api import GameState, AgentID
+from rlgym.api import RewardFunction, AgentID
+from rlgym.rocket_league.api import GameState
 from rlgym.rocket_league import common_values
 import numpy as np
 
