@@ -23,13 +23,13 @@ replay_frames = replay_to_rlgym(replay)
 # Now we can iterate over the replay frames.
 for replay_frame in replay_frames:
     # ReplayFrame structure:
-    #     state: GameState                 # Game state representation
-    #     actions: Dict[int, np.ndarray]   # Player action vectors
-    #     update_age: Dict[int, float]     # Time delta since last update
-    #     scoreboard: ScoreboardInfo       # Game score state
-    #     episode_seconds_remaining: float  # Match time remaining
-    #     next_scoring_team: Optional[int] # Team scoring next goal
-    #     winning_team: Optional[int]      # Currently leading team
+    #     state: GameState                  # Game state representation
+    #     actions: Dict[int, np.ndarray]    # Actions for each player
+    #     update_age: Dict[int, float]      # Time delta since last update for each player
+    #     scoreboard: ScoreboardInfo        # Scoreline and game timer
+    #     episode_seconds_remaining: float  # Time remaining until goal or ball hitting ground at 0s
+    #     next_scoring_team: Optional[int]  # Team that scores next goal, or None if ball hits ground at 0s
+    #     winning_team: Optional[int]       # Team that wins this match, or None if there is no winner
 ```
 
 ## Scoreboard
