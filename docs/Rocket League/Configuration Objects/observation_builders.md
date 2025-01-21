@@ -14,7 +14,7 @@ To make your own observation builder, you'll need three methods:
 def get_obs_space(self, agent: AgentID) -> ObsSpaceType:
     
 # Called every time `TransitionEngine.create_base_state()` is called.
-def reset(self, initial_state: StateType, shared_info: Dict[str, Any]) -> None:
+def reset(self, agents: List[AgentID], initial_state: StateType, shared_info: Dict[str, Any]) -> None:
 
 # Called every time `TransitionEngine.step()` or `TransitionEngine.create_base_state()` is called.
 def build_obs(self, agents: List[AgentID], state: StateType, shared_info: Dict[str, Any]) -> Dict[AgentID, ObsType]:

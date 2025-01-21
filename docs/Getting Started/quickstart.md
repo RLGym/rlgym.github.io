@@ -75,8 +75,8 @@ def build_rlgym_v2_env():
 if __name__ == "__main__":
     from rlgym_ppo import Learner
 
-    # 32 processes
-    n_proc = 32
+    # 8 processes
+    n_proc = 8
 
     # educated guess - could be slightly higher or lower
     min_inference_size = max(1, int(round(n_proc * 0.9)))
@@ -86,8 +86,8 @@ if __name__ == "__main__":
                       min_inference_size=min_inference_size,
                       metrics_logger=None,
                       ppo_batch_size=50000, # batch size - set this number to as large as your GPU can handle
-                      policy_layer_sizes=[2048, 2048, 1024, 1024], # policy network
-                      critic_layer_sizes=[2048, 2048, 1024, 1024], # value network
+                      policy_layer_sizes=[512, 512], # policy network
+                      critic_layer_sizes=[512, 512], # value network
                       ts_per_iteration=50000, # timesteps per training iteration - set this equal to the batch size
                       exp_buffer_size=150000, # size of experience buffer - keep this 2 - 3x the batch size
                       ppo_minibatch_size=50000, # minibatch size - set this less than or equal to the batch size
