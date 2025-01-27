@@ -76,17 +76,17 @@ Now we can provide an instance of our `CustomObsBuilder` to an RLGym environment
 If we tried to train an agent to play the game using the observation builder in the above example won't get us very far
 for a number of reasons. One of those is that our agents don't know what team they're on! To avoid re-learning the same
 strategy on both sides of the pitch, it's often useful to transform the physics information for the agents and ball such
-that agents always view the pitch from the perspective of a player on the orange team.
+that agents always view the pitch from the perspective of a player on the blue team.
 
 To do this, we'll check which team the agent is on before building an observation for it and when we find an agent on the
-blue team we will use the `inverted_physics` property available in the `Car` object. This will compute the inverted physics
+orange team we will use the `inverted_physics` property available in the `Car` object. This will compute the inverted physics
 data for that car if it has not yet been computed and return it to us.
 
 Let's modify our above example to include the `inverted_physics` object when appropriate.
 ```python
 from rlgym.api import ObsBuilder, AgentID
 from rlgym.rocket_league.api import Car, GameState
-from rlgym.rocket_league.common_values import ORANGE_TEAM
+from rlgym.rocket_league.common_values import BLUE_TEAM
 from typing import List, Dict, Any, Tuple
 import numpy as np
 
@@ -112,12 +112,12 @@ class CustomObsBuilder(ObsBuilder):
         # We will first grab the car that is being controlled by this agent.
         car = state.cars[agent]
         
-        # Then we'll check if this agent is on the orange team already.
-        if car.team_num == ORANGE_TEAM:
+        # Then we'll check if this agent is on the blue team already.
+        if car.team_num == BLUE_TEAM:
             agent_physics_state = state.cars[agent].physics
             ball = state.ball
         else:
-            # If this agent isn't on the orange team we'll use the inverted physics information for both the car and the ball.
+            # If this agent isn't on the blue team we'll use the inverted physics information for both the car and the ball.
             agent_physics_state = state.cars[agent].inverted_physics
             ball = state.inverted_ball
         
@@ -139,7 +139,7 @@ class CustomObsBuilder(ObsBuilder):
         return np.concatenate(agent_obs)
 ```
 
-Now our agents will always think they're playing on the orange side of the pitch!
+Now our agents will always think they're playing on the blue side of the pitch!
 
 While these `ObsBuilder` examples won't crash if provided to an RLGym environment, they lack a lot of information that
 an effective game-playing agent would need to know about. If you're looking for a more complete example, check out the [default observation builder](https://github.com/lucas-emery/rocket-league-gym/blob/main/rlgym/rocket_league/obs_builders/default_obs.py) provided by RLGym!
