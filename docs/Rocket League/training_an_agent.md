@@ -71,12 +71,11 @@ class VelocityBallToGoalReward(RewardFunction[AgentID, GameState, float]):
         rewards = {}
         for agent in agents:
             car = state.cars[agent]
+            ball = state.ball
             if car.is_orange:
-                ball = state.ball
-                goal_y = common_values.BACK_NET_Y
-            else:
-                ball = state.inverted_ball
                 goal_y = -common_values.BACK_NET_Y
+            else:
+                goal_y = common_values.BACK_NET_Y
 
             ball_vel = ball.linear_velocity
             pos_diff = np.array([0, goal_y, 0]) - ball.position
