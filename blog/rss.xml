@@ -4,7 +4,7 @@
         <title>RLGym Blog</title>
         <link>https://rlgym.org/blog</link>
         <description>RLGym Blog</description>
-        <lastBuildDate>Wed, 19 Feb 2025 18:43:56 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 19 Feb 2025 18:58:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Welcome]]></title>
             <link>https://rlgym.org/blog/index</link>
             <guid>https://rlgym.org/blog/index</guid>
-            <pubDate>Wed, 19 Feb 2025 18:43:56 GMT</pubDate>
+            <pubDate>Wed, 19 Feb 2025 18:58:09 GMT</pubDate>
             <description><![CDATA[Welcome to the RLGYM Blog]]></description>
             <content:encoded><![CDATA[<p>Welcome to the RLGYM Blog</p>]]></content:encoded>
         </item>
