@@ -1,6 +1,6 @@
-----------
+---
 title: 24k Magic Championship
-----------
+---
 
 [Info and Rules](https://docs.google.com/document/d/18KL4ZdvHbaO1QMvuBKB1JkgpmUVuPGJx-m_qjNGSSW0/)
 
