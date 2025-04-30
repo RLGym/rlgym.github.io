@@ -69,7 +69,7 @@ Think of the advantage function as a measure of how much better it was to take t
 
 ## The Learning Process
 
-Most learning algorithms consider an *objective function* $J(\pi)$, which is a function that maps a policy $\pi$ to a real number. The goal of learning is then to find a policy $\pi^*$ that maximizes the objective function, i.e. $J(\pi^*) = \max_{\pi} J(\pi)$. A convenient choice for $J$ would be any of the Q function, value function, or advantage function. For our purposes we will focus on the advantage function, because the Proximal Policy Optimization (PPO) algorithm uses that as an  bjective.
+Most learning algorithms consider an *objective function* $J(\pi)$, which is a function that maps a policy $\pi$ to a real number. The goal of learning is then to find a policy $\pi^*$ that maximizes the objective function, i.e. $J(\pi^*) = \max_{\pi} J(\pi)$. A convenient choice for $J$ would be any of the Q function, value function, or advantage function. For our purposes we will focus on the advantage function, because the Proximal Policy Optimization (PPO) algorithm uses that as an objective.
 
 
 ## Generalized Advantage Estimation
