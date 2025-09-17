@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Training an Agent
 
-This guide builds on our [Quick Start Guide](../Getting%20Started/quickstart) to help you train a more sophisticated Rocket League bot than the simple setup in the quickstart guide. We'll use RocketSim to run training much faster than the actual game, and cover all the key concepts you need to know.
+This guide builds on our [Quick Start Guide](../../Getting%20Started/quickstart) to help you train a more sophisticated Rocket League bot than the simple setup in the quickstart guide. We'll use RocketSim to run training much faster than the actual game, and cover all the key concepts you need to know.
 
 This tutorial is adapted from an excellent guide written by Zealan, the creator of RocketSim. You can find the [original tutorial here](https://github.com/ZealanL/RLGym-PPO-Guide/tree/main) for even more details.
 
