@@ -120,7 +120,7 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/E6CDtwgP8F',
+                href: 'https://link.rlgym.org/PtVrSn',
                 type: 'discord',
               },
               {
